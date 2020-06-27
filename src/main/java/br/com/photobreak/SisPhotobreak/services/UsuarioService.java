@@ -3,6 +3,7 @@ package br.com.photobreak.SisPhotobreak.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,9 @@ public class UsuarioService {
 	public Usuario findById(Long id){
 		Optional<Usuario> obj = repository.findById(id);
 		return obj.get();
+	}
+	
+	public Usuario insert(Usuario obj) {
+		return repository.save(obj);
 	}
 }
