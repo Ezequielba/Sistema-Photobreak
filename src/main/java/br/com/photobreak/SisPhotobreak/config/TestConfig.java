@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import br.com.photobreak.SisPhotobreak.entities.Cliente;
+import br.com.photobreak.SisPhotobreak.entities.Parcela;
 import br.com.photobreak.SisPhotobreak.entities.Produto;
 import br.com.photobreak.SisPhotobreak.entities.Usuario;
 import br.com.photobreak.SisPhotobreak.entities.Venda;
 import br.com.photobreak.SisPhotobreak.repositories.ClienteRepository;
+import br.com.photobreak.SisPhotobreak.repositories.ParcelaRepository;
 import br.com.photobreak.SisPhotobreak.repositories.ProdutoRepository;
 import br.com.photobreak.SisPhotobreak.repositories.UsuarioRepository;
 import br.com.photobreak.SisPhotobreak.repositories.VendaRepository;
@@ -32,6 +34,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private VendaRepository vendaRepository;
+	
+	@Autowired
+	private ParcelaRepository parcelaRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -50,12 +55,13 @@ public class TestConfig implements CommandLineRunner {
 		Venda v1 = new Venda(null, Instant.parse("2020-08-18T18:00:00Z"), c1, p3);
 		Venda v2 = new Venda(null, Instant.parse("2020-08-18T18:00:00Z"), c2, p1);
 		
+		Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 0.0, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 900.00);
+		
 		usuarioRepository.saveAll(Arrays.asList(u1, u2));
 		clienteRepository.saveAll(Arrays.asList(c1, c2));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
 		vendaRepository.saveAll(Arrays.asList(v1));
 		vendaRepository.saveAll(Arrays.asList(v2));
+		parcelaRepository.saveAll(Arrays.asList(pa1));
 	}
-	
-	
 }
