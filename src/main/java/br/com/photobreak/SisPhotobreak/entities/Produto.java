@@ -1,35 +1,37 @@
 package br.com.photobreak.SisPhotobreak.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Usuario implements Serializable{
+public class Produto implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	private String telefone;
-	private String email;
-	private String senha;
+	private String Nome;
+	private Double valor;
 	
-	public Usuario() {
+	@OneToMany(mappedBy = "produto")
+	private List<Venda> vendas = new ArrayList<>();
+	
+	public Produto() {
 	}
-	
-	public Usuario(Long id, String nome, String telefone, String email, String senha) {
+
+	public Produto(Long id, String nome, Double valor) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.telefone = telefone;
-		this.email = email;
-		this.senha = senha;
+		Nome = nome;
+		this.valor = valor;
 	}
 
 	public Long getId() {
@@ -41,37 +43,21 @@ public class Usuario implements Serializable{
 	}
 
 	public String getNome() {
-		return nome;
+		return Nome;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		Nome = nome;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public Double getValor() {
+		return valor;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,7 +74,7 @@ public class Usuario implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		Produto other = (Produto) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -96,6 +82,5 @@ public class Usuario implements Serializable{
 			return false;
 		return true;
 	}
-
-
+	
 }

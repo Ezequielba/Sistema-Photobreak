@@ -1,35 +1,42 @@
 package br.com.photobreak.SisPhotobreak.entities;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Usuario implements Serializable{
+public class Venda implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	private String telefone;
-	private String email;
-	private String senha;
+	private Instant dataVenda;
 	
-	public Usuario() {
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "produto_id")
+	private Produto produto;
+	
+	public Venda() {
 	}
 	
-	public Usuario(Long id, String nome, String telefone, String email, String senha) {
+	public Venda(Long id, Instant dataVenda, Cliente cliente, Produto produto) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.telefone = telefone;
-		this.email = email;
-		this.senha = senha;
+		this.dataVenda = dataVenda;
+		this.cliente = cliente;
+		this.produto = produto;
 	}
 
 	public Long getId() {
@@ -40,38 +47,24 @@ public class Usuario implements Serializable{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public Instant getDataVenda() {
+		return dataVenda;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDataVenda(Instant dataVenda) {
+		this.dataVenda = dataVenda;
 	}
 
-	public String getTelefone() {
-		return telefone;
+
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public Produto getProduto() {
+		return produto;
 	}
 
-	public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,7 +81,7 @@ public class Usuario implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		Venda other = (Venda) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -96,6 +89,4 @@ public class Usuario implements Serializable{
 			return false;
 		return true;
 	}
-
-
 }
