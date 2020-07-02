@@ -2,6 +2,8 @@ package br.com.photobreak.SisPhotobreak.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Venda implements Serializable{
@@ -27,6 +30,9 @@ public class Venda implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "produto_id")
 	private Produto produto;
+	
+	@OneToMany(mappedBy = "venda")
+	private List<Parcela> parcelas = new ArrayList<>();
 	
 	public Venda() {
 	}

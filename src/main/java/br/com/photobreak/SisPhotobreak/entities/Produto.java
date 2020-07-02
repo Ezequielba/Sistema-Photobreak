@@ -24,6 +24,9 @@ public class Produto implements Serializable{
 	@OneToMany(mappedBy = "produto")
 	private List<Venda> vendas = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "produto")
+	private List<Parcela> parcelas = new ArrayList<>();
+	
 	public Produto() {
 	}
 

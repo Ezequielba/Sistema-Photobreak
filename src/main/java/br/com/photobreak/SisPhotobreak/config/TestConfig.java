@@ -55,7 +55,7 @@ public class TestConfig implements CommandLineRunner {
 		Venda v1 = new Venda(null, Instant.parse("2020-08-18T18:00:00Z"), c1, p3);
 		Venda v2 = new Venda(null, Instant.parse("2020-08-18T18:00:00Z"), c2, p1);
 		
-		Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 0.0, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 900.00);
+		Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 0.0, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 900.00, c1, v2, p2);
 		
 		usuarioRepository.saveAll(Arrays.asList(u1, u2));
 		clienteRepository.saveAll(Arrays.asList(c1, c2));

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Parcela implements Serializable{
@@ -25,11 +27,24 @@ public class Parcela implements Serializable{
 	private Instant dataCompetencia;
 	private Double valorPendente;
 	
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "venda_id")
+	private Venda venda;
+	
+	@ManyToOne
+	@JoinColumn(name = "produto_id")
+	private Produto produto ;
+	
 	public Parcela() {
 	}
 
 	public Parcela(Long id, String numParcela, Double valorParcela, Double reebolso, Instant dataRecebimento,
-			Double desconto, Double descontoMulta, Instant dataCompetencia, Double valorPendente) {
+			Double desconto, Double descontoMulta, Instant dataCompetencia, Double valorPendente, Cliente cliente,
+			Venda venda, Produto produto) {
 		super();
 		this.id = id;
 		this.numParcela = numParcela;
@@ -40,9 +55,10 @@ public class Parcela implements Serializable{
 		this.descontoMulta = descontoMulta;
 		this.dataCompetencia = dataCompetencia;
 		this.valorPendente = valorPendente;
+		this.cliente = cliente;
+		this.venda = venda;
+		this.produto = produto;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -114,6 +130,18 @@ public class Parcela implements Serializable{
 
 	public void setValorPendente(Double valorPendente) {
 		this.valorPendente = valorPendente;
+	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public Produto getProduto() {
+		return produto;
 	}
 
 	@Override

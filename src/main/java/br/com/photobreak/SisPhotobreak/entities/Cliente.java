@@ -29,6 +29,9 @@ public class Cliente implements Serializable{
 	@OneToMany(mappedBy = "cliente")
 	private List<Venda> vendas = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "cliente")
+	private List<Parcela> parcelas = new ArrayList<>();
+	
 	public Cliente() {
 	}
 
