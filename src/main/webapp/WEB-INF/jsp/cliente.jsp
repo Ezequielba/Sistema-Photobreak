@@ -25,33 +25,35 @@
 	<div class="container">
 		<br>
 	</div>
-
+	
+<!--
 	<div class="container">
 		<header>
-			<h1>Lista de usuários:</h1>
+			<h1>Lista de clientes:</h1>
 		</header>
 		<div class="starter-template">
 
 			<table
 				class="table table-striped table-hover table-condensed table-bordered">
 				<tr>
-					<th>Id</th>
-					<th>Email</th>
 					<th>Nome</th>
 					<th>Telefone</th>
+					<th>Email</th>
+					<th>Endereço</th>
+					<th>Data Evento</th>
 				</tr>
-				<c:forEach var="user" items="${login}">
+				<c:forEach var="user" items="${cliente}">
 					<tr>
-						<td>${user.id}</td>
-						<td>${user.email}</td>
 						<td>${user.nome}</td>
 						<td>${user.telefone}</td>
+						<td>${user.email}</td>
+						<td>${user.endereco}</td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
-
+-->
 	<!-- Bootstrap core JavaScript -->
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>
 	<script src="login-util/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -29,13 +29,14 @@ public class UsuarioResource {
 	@Autowired
 	private UsuarioService service;
 	
-	@GetMapping(value = {"/","/usuarios"})
+	@GetMapping(value = {"/","/login"})
 	public String home(Model model){
+		loginValido = false;
 		 model.addAttribute("user", new Usuario());
-		return "usuarios";
+		return "login";
 	}
 	
-	@PostMapping(value = "/usuarios")
+	@PostMapping(value = "/login")
 	public String home(HttpServletRequest request, 
 	        @RequestParam(value="email", required=false) String email, 
 	        @RequestParam(value="senha", required=false) String senha
@@ -44,17 +45,24 @@ public class UsuarioResource {
 			loginValido = true;
 			 return "redirect:/principal";
 		 }
-		 return "usuarios";
+		 return "login";
 	}
 	
 	@GetMapping({"/principal"})
-	public String List(Model model){
-		 model.addAttribute("login", service.findAll());
+	public String List(){
 		 if(loginValido) {
-			 loginValido = false;
 			 return "/principal";
 			 }
 		return "redirect:/usuarios";
+	}
+	
+	@GetMapping({"/usuarios"})
+	public String List(Model model){
+		 model.addAttribute("login", service.findAll());
+		 if(loginValido) {
+			 return "/usuarios";
+			 }
+		return "redirect:/login";
 	}
 	
 	@GetMapping
