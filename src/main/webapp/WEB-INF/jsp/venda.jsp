@@ -18,37 +18,36 @@
 </head>
 
 <body>
+	<!-- Navigation -->
 
 <jsp:include page="menu.jsp" />
 
 	<div class="container">
 		<br>
 	</div>
-
+	
 	<div class="container">
 		<header>
-			<h1>Lista de usuários:</h1>
+			<h1>Lista de vendas:</h1>
 		</header>
 		<div class="starter-template">
 
 			<table
 				class="table table-striped table-hover table-condensed table-bordered">
 				<tr>
-					<th>Id</th>
-					<th>Email</th>
-					<th>Nome</th>
-					<th>Telefone</th>
+					<th>Cliente</th>
+					<th>Produto</th>
+					<th>Data da venda</th>
 					<th>Editar</th>
 					<th>Excluir</th>
 				</tr>
-				<c:forEach var="user" items="${login}">
+				<c:forEach var="user" items="${venda}">
 					<tr>
-						<td>${user.id}</td>
-						<td>${user.email}</td>
-						<td>${user.nome}</td>
-						<td>${user.telefone}</td>
-						<td WIDTH="7%"><button>Editar</button></td>
-						<td WIDTH="7%"><button>Excluir</button></td>
+						<td>${user.cliente}</td>
+						<td>${user.produto}</td>
+						<td>${user.dataVenda}</td>
+						<td><button>Editar</button></td>
+						<td><button>Excluir</button></td>
 					</tr>
 				</c:forEach>
 			</table>

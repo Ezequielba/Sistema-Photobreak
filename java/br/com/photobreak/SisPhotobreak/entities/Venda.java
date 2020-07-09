@@ -65,6 +65,7 @@ public class Venda implements Serializable{
 	public Cliente getCliente() {
 		return cliente;
 	}
+	
 
 	public Produto getProduto() {
 		return produto;

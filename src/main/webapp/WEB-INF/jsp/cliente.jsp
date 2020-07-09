@@ -26,7 +26,6 @@
 		<br>
 	</div>
 	
-<!--
 	<div class="container">
 		<header>
 			<h1>Lista de clientes:</h1>
@@ -41,6 +40,8 @@
 					<th>Email</th>
 					<th>Endereço</th>
 					<th>Data Evento</th>
+					<th>Editar</th>
+					<th>Excluir</th>
 				</tr>
 				<c:forEach var="user" items="${cliente}">
 					<tr>
@@ -48,12 +49,15 @@
 						<td>${user.telefone}</td>
 						<td>${user.email}</td>
 						<td>${user.endereco}</td>
+						<td>${user.dataEvento}</td>
+						<td WIDTH="7%"><button>Editar</button></td>
+						<td WIDTH="7%"><button>Excluir</button></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
--->
+
 	<!-- Bootstrap core JavaScript -->
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>
 	<script src="login-util/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

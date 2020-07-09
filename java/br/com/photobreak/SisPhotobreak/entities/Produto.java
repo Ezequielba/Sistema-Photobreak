@@ -18,7 +18,7 @@ public class Produto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String Nome;
+	private String nome;
 	private Double valor;
 	
 	@OneToMany(mappedBy = "produto")
@@ -33,7 +33,7 @@ public class Produto implements Serializable{
 	public Produto(Long id, String nome, Double valor) {
 		super();
 		this.id = id;
-		Nome = nome;
+		this.nome = nome;
 		this.valor = valor;
 	}
 
@@ -46,11 +46,11 @@ public class Produto implements Serializable{
 	}
 
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 
 	public Double getValor() {

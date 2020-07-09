@@ -14,9 +14,9 @@
 						role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="cliente">Cliente</a> <a
-								class="dropdown-item" href="#">Produto</a>
+								class="dropdown-item" href="produto">Produto</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Venda</a>
+							<a class="dropdown-item" href="venda">Venda</a>
 						</div></li>
 
 					<li class="nav-item dropdown"><a

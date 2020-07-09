@@ -29,6 +29,7 @@ public class UsuarioResource {
 	@Autowired
 	private UsuarioService service;
 	
+
 	@GetMapping(value = {"/","/login"})
 	public String home(Model model){
 		loginValido = false;
@@ -64,7 +65,7 @@ public class UsuarioResource {
 			 }
 		return "redirect:/login";
 	}
-	
+		
 	@GetMapping
 	public ResponseEntity<List<Usuario>> findAll() {
 		List<Usuario> list = service.findAll();
