@@ -20,6 +20,12 @@ public class ClienteResource {
 		model.addAttribute("cliente", cliente.findAll());
 			 return "cliente";
 	}
+	
+	@RequestMapping({"/cadcliente"})
+	public String Lista(){
+		//model.addAttribute("produto", produto.findAll());
+			 return "cadcliente";
+	}
 
 /*	@GetMapping
 	public ResponseEntity<List<Cliente>> findAll() {

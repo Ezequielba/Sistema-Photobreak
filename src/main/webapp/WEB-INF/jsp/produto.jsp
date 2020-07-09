@@ -28,7 +28,10 @@
 	
 	<div class="container">
 		<header>
-			<h1>Lista de produto:</h1>
+			<h1>Lista de produto</h1>
+			<a href="cadproduto"><button type="button" class="btn btn-primary btn-lg">Novo
+  			</button></a>
+			<br></br>
 		</header>
 		<div class="starter-template">
 
@@ -46,13 +49,34 @@
 						<td>${user.id}</td>
 						<td>${user.nome}</td>
 						<td>${user.valor}</td>
-						<td WIDTH="7%"><button>Editar</button></td>
-						<td WIDTH="7%"><button>Excluir</button></td>
+						<td WIDTH="7%"><button type="button" class="btn btn-info btn-sm">Editar</button>
+						<td WIDTH="7%"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ExemploModalCentralizado">Excluir</button>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
+	
+	<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Opa! Você está excluindo um produto.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      Tem certeza que deseja excluir?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>

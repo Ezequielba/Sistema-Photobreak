@@ -63,5 +63,9 @@ public class TestConfig implements CommandLineRunner {
 		vendaRepository.saveAll(Arrays.asList(v1));
 		vendaRepository.saveAll(Arrays.asList(v2));
 		parcelaRepository.saveAll(Arrays.asList(pa1));
+		
+		System.out.println();
+		System.out.println("Informações da venda:");
+		System.out.println(v1.getId() + " - Produto: " + p1.getNome() + " - Cliente: " + c1.getNome() + " - Usuário: " + u1.getNome());
 	}
 }

@@ -18,6 +18,12 @@ public class ProdutoResource {
 		model.addAttribute("produto", produto.findAll());
 			 return "produto";
 	}
+	
+	@RequestMapping({"/cadproduto"})
+	public String Lista(){
+		//model.addAttribute("produto", produto.findAll());
+			 return "cadproduto";
+	}
 
 /*
 	@GetMapping
