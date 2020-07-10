@@ -85,12 +85,22 @@ public class UsuarioResource {
 		Usuario obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
+
 	
-	@PostMapping
+	@PostMapping(value="/{id}")
 	public ResponseEntity<Usuario> insert(@RequestBody Usuario obj){
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
-	
+
+
+	@GetMapping(value="/excluir")
+	public String delete(Long id, HttpServletRequest request){
+		id = Long.parseLong(request.getParameter("id"));
+		System.out.println(id);
+		service.detele(id);
+		return "redirect:/usuarios";
+	}
+
 }

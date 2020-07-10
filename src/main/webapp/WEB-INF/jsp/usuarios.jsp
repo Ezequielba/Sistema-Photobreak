@@ -15,6 +15,16 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
+
+<script type="text/javascript">
+		function excluir_registro() {
+			if(!confirm("Deseja realmente excluir este registro?"))
+
+			event.preventDefault();
+
+			}
+</script>
+	
 </head>
 
 <body>
@@ -51,7 +61,7 @@
 						<td>${user.nome}</td>
 						<td>${user.telefone}</td>
 						<td WIDTH="7%"><button type="button" class="btn btn-info btn-sm">Editar</button>
-						<td WIDTH="7%"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ExemploModalCentralizado">Excluir</button>
+						<td WIDTH="7%"><a href="excluir?id=${user.id}" onclick="excluir_registro()"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ExemploModalCentralizado">Excluir</button></a>
 					</tr>
 				</c:forEach>
 			</table>

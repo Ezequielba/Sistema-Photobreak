@@ -19,6 +19,10 @@ public class ClienteService {
 		return repository.findAll();
 	}
 	
+	public void detele(Long id) {
+		repository.deleteById(id);
+	}
+	
 	public Cliente findById(Long id){
 		Optional<Cliente> obj = repository.findById(id);
 		return obj.get();

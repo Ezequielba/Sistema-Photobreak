@@ -28,6 +28,10 @@ public class UsuarioService {
 		return repository.save(obj);
 	}
 	
+	public void detele(Long id) {
+		repository.deleteById(id);
+	}
+	
 	public boolean usuarioValido(String email, String senha){
 		List<Usuario> list = findAll();
 		for (Usuario usuario : list) {
