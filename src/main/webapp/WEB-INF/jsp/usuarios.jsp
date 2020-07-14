@@ -17,19 +17,20 @@
 	crossorigin="anonymous">
 
 <script type="text/javascript">
-		function excluir_registro() {
-			if(!confirm("Deseja realmente excluir este registro?"))
+	function excluir_registro() {
+		if (!confirm("Deseja realmente excluir este registro?"))
 
 			event.preventDefault();
 
-			}
+	}
 </script>
-	
+
+
 </head>
 
 <body>
 
-<jsp:include page="menu.jsp" />
+	<jsp:include page="menu.jsp" />
 
 	<div class="container">
 		<br>
@@ -38,12 +39,11 @@
 	<div class="container">
 		<header>
 			<h1>Lista de usuários:</h1>
-			<a href="cadusuario"><button type="button" class="btn btn-primary btn-lg">Novo
-  			</button></a>
-			<br></br>
+			<a href="cadusuario"><button type="button"
+					class="btn btn-primary btn-lg">Novo</button></a> <br></br>
 		</header>
-		<div class="starter-template">
 
+		<div class="starter-template">
 			<table
 				class="table table-striped table-hover table-condensed table-bordered">
 				<tr>
@@ -60,34 +60,41 @@
 						<td>${user.email}</td>
 						<td>${user.nome}</td>
 						<td>${user.telefone}</td>
-						<td WIDTH="7%"><button type="button" class="btn btn-info btn-sm">Editar</button>
-						<td WIDTH="7%"><a href="excluir?id=${user.id}" onclick="excluir_registro()"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ExemploModalCentralizado">Excluir</button></a>
+						<td WIDTH="7%"><button type="button"
+								class="btn btn-info btn-sm">Editar</button>
+						<td WIDTH="7%"><a href="excluir?id=${user.id}"><button
+									type="button" class="btn btn-danger btn-sm">Excluir</button></a>
+<!-- Adicionar estes modais no button -- data-toggle="modal" data-target="#ExemploModalCentralizado" -->
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
 
-		<!-- Modal -->
-<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Eita! Você está excluindo um usuário.</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      O Ezek sabe disso?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1"
+		role="dialog" aria-labelledby="TituloModalCentralizado"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="TituloModalCentralizado">Eita! Você está excluindo um usuário.</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">O Ezek sabe disso?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Fechar</button>
+					<button type="button" class="btn btn-primary">Salvar mudanças</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>

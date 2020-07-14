@@ -27,4 +27,8 @@ public class ProdutoService {
 	public Produto insert(Produto obj) {
 		return repository.save(obj);
 	}
+	
+	public void detele(Long id) {
+		repository.deleteById(id);
+	}
 }

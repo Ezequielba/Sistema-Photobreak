@@ -1,9 +1,11 @@
 package br.com.photobreak.SisPhotobreak.resources;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.photobreak.SisPhotobreak.services.ProdutoService;
@@ -26,6 +28,13 @@ public class ProdutoResource {
 			 return "cadproduto";
 	}
 	
+	@GetMapping(value="/excluirprod")
+	public String delete(Long id, HttpServletRequest request){
+		id = Long.parseLong(request.getParameter("id"));
+		System.out.println(id);
+		produto.detele(id);
+		return "redirect:/produto";
+	}
 
 
 /*

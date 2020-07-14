@@ -31,4 +31,5 @@ public class ClienteService {
 	public Cliente insert(Cliente obj) {
 		return repository.save(obj);
 	}
+	
 }
