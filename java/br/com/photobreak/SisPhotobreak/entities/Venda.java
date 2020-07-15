@@ -22,6 +22,8 @@ public class Venda implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Instant dataVenda;
+	private String nomecli;
+	private String nomeprod;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
@@ -43,6 +45,14 @@ public class Venda implements Serializable{
 		this.dataVenda = dataVenda;
 		this.cliente = cliente;
 		this.produto = produto;
+	}
+	
+	public Venda(Long id, Instant dataVenda, String cliente, String produto) {
+		super();
+		this.id = id;
+		this.dataVenda = dataVenda;
+		this.nomecli = cliente;
+		this.nomeprod = produto;
 	}
 
 	public Long getId() {

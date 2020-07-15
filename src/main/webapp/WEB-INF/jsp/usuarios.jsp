@@ -48,8 +48,8 @@
 				class="table table-striped table-hover table-condensed table-bordered">
 				<tr>
 					<th>Id</th>
-					<th>Email</th>
 					<th>Nome</th>
+					<th>E-mail</th>
 					<th>Telefone</th>
 					<th>Editar</th>
 					<th>Excluir</th>
@@ -57,8 +57,8 @@
 				<c:forEach var="user" items="${login}">
 					<tr>
 						<td>${user.id}</td>
-						<td>${user.email}</td>
 						<td>${user.nome}</td>
+						<td>${user.email}</td>
 						<td>${user.telefone}</td>
 						<td WIDTH="7%"><button type="button"
 								class="btn btn-info btn-sm">Editar</button>

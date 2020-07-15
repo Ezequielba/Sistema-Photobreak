@@ -43,6 +43,7 @@ public class TestConfig implements CommandLineRunner {
 		
 		Usuario u1 = new Usuario(null, "Suellen Brito", "011 92746-2836", "suellen@gmail.com", "223344");
 		Usuario u2 = new Usuario(null, "Ezequiel Brito", "011 92736-3837", "ezequiel@gmail.com", "123456");
+		Usuario u3 = new Usuario(null, "XXXXXXX", "", "", "");
 		
 		Cliente c1 = new Cliente(null, "Eliel", "011 98363-2726", "eliel@gmail.com", "Rua confissão", Instant.parse("2021-08-18T18:00:00Z"));
 		Cliente c2 = new Cliente(null, "Cleusa", "011 93647-2354", "cleusa@gmail.com", "Rua barão", Instant.parse("2022-05-15T18:00:00Z"));
@@ -60,7 +61,7 @@ public class TestConfig implements CommandLineRunner {
 		
 		Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 0.0, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 900.00, c1, v2, p2);
 		
-		usuarioRepository.saveAll(Arrays.asList(u1, u2));
+		usuarioRepository.saveAll(Arrays.asList(u1, u2, u3));
 		clienteRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
 		vendaRepository.saveAll(Arrays.asList(v1));

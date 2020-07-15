@@ -1,6 +1,5 @@
 package br.com.photobreak.SisPhotobreak.resources;
 
-import java.net.URI;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.photobreak.SisPhotobreak.entities.Usuario;
 import br.com.photobreak.SisPhotobreak.services.UsuarioService;
@@ -73,7 +70,21 @@ public class UsuarioResource {
 			 return "cadusuario";
 	}
 	
+	@PostMapping(value="/cadusuario")
+	public String insert(HttpServletRequest request, 
+	        @RequestParam(value="nome", required=false) String nome, 
+	        @RequestParam(value="telefone", required=false) String telefone,
+	        @RequestParam(value="email", required=false) String email,
+	        @RequestParam(value="senha", required=false) String senha
+	        ){
+		System.out.println(nome);
+		Usuario usuario = new Usuario(null, nome, telefone, email, senha);
+		service.insert(usuario);
 		
+		System.out.println(usuario.getNome());
+		return"redirect:/usuarios";
+	}
+	
 	@GetMapping
 	public ResponseEntity<List<Usuario>> findAll() {
 		List<Usuario> list = service.findAll();
@@ -86,13 +97,6 @@ public class UsuarioResource {
 		return ResponseEntity.ok().body(obj);
 	}
 
-	
-	@PostMapping(value="/{id}")
-	public ResponseEntity<Usuario> insert(@RequestBody Usuario obj){
-		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
-	}
 
 
 	@GetMapping(value="/excluir")

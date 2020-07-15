@@ -25,25 +25,27 @@
 	<div class="container">
 		<br>
 		
-		<form>
+		<form action="/cadusuario" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">Nome</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu nome">
+    <input type="text" class="form-control" id="nome" name="nome" path="nome" aria-describedby="emailHelp" placeholder="Seu nome">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Telefone</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Telefone">
+    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1">E-mail</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="E-mail">
+    <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
   </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Clique em mim</label>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Senha</label>
+    <input type="text" class="form-control" id="senha" name="senha" placeholder="Senha">
   </div>
+  </div>
+    
   <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+		</form>
 		
 	</div>
 
