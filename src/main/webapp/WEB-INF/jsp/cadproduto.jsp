@@ -25,11 +25,11 @@
 	<div class="container">
 		<br>
 		
-		<form class="needs-validation" novalidate>
+		<form action="/cadproduto" method="POST">
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationTooltip01">Insira o nome do produto</label>
-      <input type="text" class="form-control" id="validationTooltip01" placeholder="Produto" required>
+      <input type="text" class="form-control" id="validationTooltip01" name="nome" placeholder="Produto" required>
       <div class="valid-tooltip">
         Tudo certo!
       </div>
@@ -38,7 +38,7 @@
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationTooltip03">Valor</label>
-      <input type="text" class="form-control" id="validationTooltip03" value = "R$ " placeholder="Valor" required>
+      <input type="text" class="form-control" id="validationTooltip03" name="valor" value = "R$ " placeholder="Valor" required>
       <div class="invalid-tooltip">
         Por favor, coloque o valor deste produto
       </div>

@@ -22,8 +22,11 @@ public class Cliente implements Serializable{
 	private String nome;
 	private String telefone;
 	private String email;
-	private String endereco;
-	private Instant dataEvento;
+	private String enderecocliente;
+	private String enderecoevento;
+	private String cidade;
+	private String cep;
+	private Instant dataevento;
 	
 	
 	@OneToMany(mappedBy = "cliente")
@@ -34,15 +37,28 @@ public class Cliente implements Serializable{
 	
 	public Cliente() {
 	}
-
-	public Cliente(Long id, String nome, String telefone, String email, String endereco, Instant dataEvento) {
+	
+	public Cliente(Long id, String nome, String telefone, String email, String enderecocliente, Instant dataevento) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.telefone = telefone;
 		this.email = email;
-		this.endereco = endereco;
-		this.dataEvento = dataEvento;
+		this.enderecocliente = enderecocliente;
+		this.dataevento = dataevento;
+	}
+
+	public Cliente(Long id, String nome, String telefone, String email, String enderecocliente, String enderecoevento, String cidade, String cep, Instant dataevento) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
+		this.enderecocliente = enderecocliente;
+		this.enderecoevento = enderecoevento;
+		this.cidade = cidade;
+		this.cep = cep;
+		this.dataevento = dataevento;
 	}
 
 	public Long getId() {
@@ -77,20 +93,44 @@ public class Cliente implements Serializable{
 		this.email = email;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getEnderecocliente() {
+		return enderecocliente;
+	}
+	
+	public String getEnderecoevento() {
+		return enderecoevento;
+	}
+	
+	public String getCidade() {
+		return cidade;
+	}
+	
+	public String getCep() {
+		return cep;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setEnderecocliente(String enderecocliente) {
+		this.enderecocliente = enderecocliente;
+	}
+	
+	public void setEnderecoevento(String enderecoevento) {
+		this.enderecoevento = enderecoevento;
+	}
+	
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
-	public Instant getDataEvento() {
-		return dataEvento;
+	public Instant getDataevento() {
+		return dataevento;
 	}
 
-	public void setDataEvento(Instant dataEvento) {
-		this.dataEvento = dataEvento;
+	public void setDataevento(Instant dataevento) {
+		this.dataevento = dataevento;
 	}
 
 	@Override

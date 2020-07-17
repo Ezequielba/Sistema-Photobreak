@@ -45,16 +45,16 @@ public class TestConfig implements CommandLineRunner {
 		Usuario u2 = new Usuario(null, "Ezequiel Brito", "011 92736-3837", "ezequiel@gmail.com", "123456");
 		Usuario u3 = new Usuario(null, "XXXXXXX", "", "", "");
 		
-		Cliente c1 = new Cliente(null, "Eliel", "011 98363-2726", "eliel@gmail.com", "Rua confissão", Instant.parse("2021-08-18T18:00:00Z"));
-		Cliente c2 = new Cliente(null, "Cleusa", "011 93647-2354", "cleusa@gmail.com", "Rua barão", Instant.parse("2022-05-15T18:00:00Z"));
-		Cliente c3 = new Cliente(null, "XXXXXX", "011 93647-2354", "XXXXXX@gmail.com", "Rua barão", Instant.parse("2022-05-15T18:00:00Z"));
-		Cliente c4 = new Cliente(null, "YYYYYY", "011 93647-2354", "YYYYYY@gmail.com", "Rua barão", Instant.parse("2022-05-15T18:00:00Z"));
-		Cliente c5 = new Cliente(null, "ZZZZZZ", "011 93647-2354", "ZZZZZZ@gmail.com", "Rua barão", Instant.parse("2022-05-15T18:00:00Z"));
+		Cliente c1 = new Cliente(null, "Eliel", "011 98363-2726", "eliel@gmail.com", "Rua confissão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2021-08-18T18:00:00Z"));
+		Cliente c2 = new Cliente(null, "Cleusa", "011 93647-2354", "cleusa@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
+		Cliente c3 = new Cliente(null, "XXXXXX", "011 93647-2354", "XXXXXX@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
+		Cliente c4 = new Cliente(null, "YYYYYY", "011 93647-2354", "YYYYYY@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
+		Cliente c5 = new Cliente(null, "ZZZZZZ", "011 93647-2354", "ZZZZZZ@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
 		
-		Produto p1 = new Produto(null, "Cabine de Fotos", 1200.00);
-		Produto p2 = new Produto(null, "Totem de fotos", 1100.00);
-		Produto p3 = new Produto(null, "Espelho de fotos", 1500.00);
-		Produto p4 = new Produto(null, "Lambe-Lambe", 1400.00);
+		Produto p1 = new Produto(null, "Cabine de Fotos", "1200.00");
+		Produto p2 = new Produto(null, "Totem de fotos", "1100.00");
+		Produto p3 = new Produto(null, "Espelho de fotos", "1500.00");
+		Produto p4 = new Produto(null, "Lambe-Lambe", "1400.00");
 		
 		Venda v1 = new Venda(null, Instant.parse("2020-08-18T18:00:00Z"), c1, p3);
 		Venda v2 = new Venda(null, Instant.parse("2020-08-18T18:00:00Z"), c2, p1);

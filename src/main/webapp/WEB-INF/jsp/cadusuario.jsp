@@ -42,9 +42,8 @@
     <label for="exampleInputPassword1">Senha</label>
     <input type="text" class="form-control" id="senha" name="senha" placeholder="Senha">
   </div>
-  </div>
-    
   <button type="submit" class="btn btn-primary">Enviar</button>
+
 		</form>
 		
 	</div>

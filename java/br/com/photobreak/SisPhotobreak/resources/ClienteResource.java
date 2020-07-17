@@ -1,6 +1,7 @@
 package br.com.photobreak.SisPhotobreak.resources;
 
 import java.net.URI;
+import java.time.Instant;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.photobreak.SisPhotobreak.entities.Cliente;
@@ -35,6 +37,24 @@ public class ClienteResource {
 	public String Lista(){
 		//model.addAttribute("produto", produto.findAll());
 			 return "cadcliente";
+	}
+	
+	@PostMapping(value="/cadcliente")
+	public String insert(HttpServletRequest request, 
+	        @RequestParam(value="nome", required=false) String nome, 
+	        @RequestParam(value="telefone", required=false) String telefone,
+	        @RequestParam(value="email", required=false) String email,
+	        @RequestParam(value="enderecocliente", required=false) String enderecocliente,
+	        @RequestParam(value="enderecoevento", required=false) String enderecoevento,
+	        @RequestParam(value="cidade", required=false) String cidade,
+	        @RequestParam(value="cep", required=false) String cep,
+	        @RequestParam(value="dataevento", required=false) Instant dataevento
+	        ){
+		Cliente clientes = new Cliente(null, nome, telefone, email, enderecocliente, enderecoevento, cidade, cep, dataevento);
+		cliente.insert(clientes);
+		
+		System.out.println(clientes.getNome());
+		return"redirect:/cliente";
 	}
 	
 	@GetMapping(value="/excluircli")

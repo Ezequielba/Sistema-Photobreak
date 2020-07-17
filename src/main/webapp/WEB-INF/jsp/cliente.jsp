@@ -41,7 +41,7 @@
 					<th>Nome</th>
 					<th>Telefone</th>
 					<th>Email</th>
-					<th>Endereço</th>
+					<th>Endereço Cliente</th>
 					<th>Data Evento</th>
 					<th>Editar</th>
 					<th>Excluir</th>
@@ -51,8 +51,8 @@
 						<td>${user.nome}</td>
 						<td>${user.telefone}</td>
 						<td>${user.email}</td>
-						<td>${user.endereco}</td>
-						<td>${user.dataEvento}</td>
+						<td>${user.enderecocliente}</td>
+						<td>${user.dataevento}</td>
 						<td WIDTH="7%"><button type="button" class="btn btn-info btn-sm">Editar</button>
 						<td WIDTH="7%"><a href="excluircli?id=${user.id}"><button type="button" class="btn btn-danger btn-sm">Excluir</button></a>
 					</tr>

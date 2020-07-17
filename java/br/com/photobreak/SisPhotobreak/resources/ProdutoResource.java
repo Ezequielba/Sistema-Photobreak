@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.photobreak.SisPhotobreak.entities.Produto;
 import br.com.photobreak.SisPhotobreak.services.ProdutoService;
 
 @Controller
@@ -26,6 +29,16 @@ public class ProdutoResource {
 	public String Lista(){
 		//model.addAttribute("produto", produto.findAll());
 			 return "cadproduto";
+	}
+	
+	@PostMapping(value="/cadproduto")
+	public String insert(HttpServletRequest request, 
+	        @RequestParam(value="nome", required=false) String nome, 
+	        @RequestParam(value="valor", required=false) String valor
+	        ){
+		Produto produtos = new Produto(null, nome, valor);
+		produto.insert(produtos);
+		return"redirect:/produto";
 	}
 	
 	@GetMapping(value="/excluirprod")

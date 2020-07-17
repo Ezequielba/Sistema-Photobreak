@@ -19,7 +19,7 @@ public class Produto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private Double valor;
+	private String valor;
 	
 	@OneToMany(mappedBy = "produto")
 	private List<Venda> vendas = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Produto implements Serializable{
 	public Produto() {
 	}
 
-	public Produto(Long id, String nome, Double valor) {
+	public Produto(Long id, String nome, String valor) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -53,11 +53,11 @@ public class Produto implements Serializable{
 		this.nome = nome;
 	}
 
-	public Double getValor() {
+	public String getValor() {
 		return valor;
 	}
 
-	public void setValor(Double valor) {
+	public void setValor(String valor) {
 		this.valor = valor;
 	}
 
