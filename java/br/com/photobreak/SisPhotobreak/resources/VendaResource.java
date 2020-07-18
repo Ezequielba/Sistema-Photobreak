@@ -38,7 +38,12 @@ public class VendaResource {
 			@RequestParam(value = "produto", required = false) String produto,
 			@RequestParam(value = "datavenda", required = false) String datavenda) {
 		Venda vendas = new Venda(null, valorvenda, datavenda);
-		System.out.print(valorvenda + datavenda);
+		
+		System.out.println("");
+		System.out.print(cliente + " | " + valorvenda + " | " + produto + " | " + datavenda);
+		System.out.println("");
+		System.out.println("");
+		
 		venda.insert(vendas);
 		
 		return "redirect:/venda";
