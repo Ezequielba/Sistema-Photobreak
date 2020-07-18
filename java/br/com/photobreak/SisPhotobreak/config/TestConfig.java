@@ -43,29 +43,30 @@ public class TestConfig implements CommandLineRunner {
 		
 		Usuario u1 = new Usuario(null, "Suellen Brito", "011 92746-2836", "suellen@gmail.com", "223344");
 		Usuario u2 = new Usuario(null, "Ezequiel Brito", "011 92736-3837", "ezequiel@gmail.com", "123456");
-		Usuario u3 = new Usuario(null, "XXXXXXX", "", "", "");
 		
 		Cliente c1 = new Cliente(null, "Eliel", "011 98363-2726", "eliel@gmail.com", "Rua confissão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2021-08-18T18:00:00Z"));
 		Cliente c2 = new Cliente(null, "Cleusa", "011 93647-2354", "cleusa@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
-		Cliente c3 = new Cliente(null, "XXXXXX", "011 93647-2354", "XXXXXX@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
-		Cliente c4 = new Cliente(null, "YYYYYY", "011 93647-2354", "YYYYYY@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
-		Cliente c5 = new Cliente(null, "ZZZZZZ", "011 93647-2354", "ZZZZZZ@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
+		Cliente c3 = new Cliente(null, "João", "011 93647-2354", "XXXXXX@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
+		Cliente c4 = new Cliente(null, "Isadora", "011 93647-2354", "YYYYYY@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
+		Cliente c5 = new Cliente(null, "Carlos", "011 93647-2354", "ZZZZZZ@gmail.com", "Rua barão", "Monte Castelo", "Mauá", "09587-230", Instant.parse("2022-05-15T18:00:00Z"));
 		
 		Produto p1 = new Produto(null, "Cabine de Fotos", "1200.00");
 		Produto p2 = new Produto(null, "Totem de fotos", "1100.00");
 		Produto p3 = new Produto(null, "Espelho de fotos", "1500.00");
 		Produto p4 = new Produto(null, "Lambe-Lambe", "1400.00");
 		
-		Venda v1 = new Venda(null, Instant.parse("2020-08-18T18:00:00Z"), c1, p3);
-		Venda v2 = new Venda(null, Instant.parse("2020-08-18T18:00:00Z"), c2, p1);
+		Venda v1 = new Venda(null, c1.getNome(), p3.getNome(), "01/05/2020", c1, p2);
+		Venda v2 = new Venda(null, c2.getNome(), p1.getNome(), "10/02/2018", c2, p1);
+		Venda v3 = new Venda(null, c3.getNome(), p2.getNome(), "15/08/2022");
 		
 		Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 0.0, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 900.00, c1, v2, p2);
 		
-		usuarioRepository.saveAll(Arrays.asList(u1, u2, u3));
+		usuarioRepository.saveAll(Arrays.asList(u1, u2));
 		clienteRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
 		vendaRepository.saveAll(Arrays.asList(v1));
 		vendaRepository.saveAll(Arrays.asList(v2));
+		vendaRepository.saveAll(Arrays.asList(v3));
 		parcelaRepository.saveAll(Arrays.asList(pa1));
 		
 		System.out.println();

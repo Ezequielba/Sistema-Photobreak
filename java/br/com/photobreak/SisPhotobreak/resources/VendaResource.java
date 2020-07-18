@@ -1,10 +1,15 @@
 package br.com.photobreak.SisPhotobreak.resources;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.photobreak.SisPhotobreak.entities.Venda;
 import br.com.photobreak.SisPhotobreak.services.VendaService;
 
 @Controller
@@ -17,6 +22,24 @@ public class VendaResource {
 	public String Lista(Model model){
 		model.addAttribute("venda", venda.findAll());
 			 return "venda";
+	}
+	
+	@RequestMapping({"/cadvenda"})
+	public String Lista(){
+		//model.addAttribute("produto", produto.findAll());
+			 return "cadvenda";
+	}
+	
+	@PostMapping(value="/cadvenda")
+	public String insert(HttpServletRequest request, 
+	        @RequestParam(value="cliente", required=false) String cliente, 
+	        @RequestParam(value="produto", required=false) String produto,
+	        @RequestParam(value="datavenda", required=false) String datavenda
+	        ){
+		Venda vendas = new Venda(null, cliente, produto, datavenda);
+		venda.insert(vendas);
+		
+		return"redirect:/venda";
 	}
 	
 /*	

@@ -1,7 +1,6 @@
 package br.com.photobreak.SisPhotobreak.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +20,9 @@ public class Venda implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Instant dataVenda;
 	private String nomecli;
 	private String nomeprod;
+	private String dataVenda;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
@@ -39,20 +38,22 @@ public class Venda implements Serializable{
 	public Venda() {
 	}
 	
-	public Venda(Long id, Instant dataVenda, Cliente cliente, Produto produto) {
+	public Venda(Long id, String nomecli, String nomeprod, String dataVenda, Cliente cliente, Produto produto) {
 		super();
 		this.id = id;
+		this.nomecli = nomecli;
+		this.nomeprod = nomeprod;
 		this.dataVenda = dataVenda;
 		this.cliente = cliente;
 		this.produto = produto;
 	}
 	
-	public Venda(Long id, Instant dataVenda, String cliente, String produto) {
+	public Venda(Long id, String nomecli, String nomeprod, String dataVenda) {
 		super();
 		this.id = id;
+		this.nomecli = nomecli;
+		this.nomeprod = nomeprod;
 		this.dataVenda = dataVenda;
-		this.nomecli = cliente;
-		this.nomeprod = produto;
 	}
 
 	public Long getId() {
@@ -63,11 +64,11 @@ public class Venda implements Serializable{
 		this.id = id;
 	}
 
-	public Instant getDataVenda() {
+	public String getDataVenda() {
 		return dataVenda;
 	}
 
-	public void setDataVenda(Instant dataVenda) {
+	public void setDataVenda(String dataVenda) {
 		this.dataVenda = dataVenda;
 	}
 
@@ -80,7 +81,22 @@ public class Venda implements Serializable{
 	public Produto getProduto() {
 		return produto;
 	}
+	
+	public String getNomecli() {
+		return nomecli;
+	}
 
+	public void setNomecli(String nomecli) {
+		this.nomecli = nomecli;
+	}
+
+	public String getNomeprod() {
+		return nomeprod;
+	}
+
+	public void setNomeprod(String nomeprod) {
+		this.nomeprod = nomeprod;
+	}
 
 	@Override
 	public int hashCode() {
