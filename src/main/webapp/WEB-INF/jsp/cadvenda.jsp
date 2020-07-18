@@ -40,6 +40,16 @@
         Por favor, coloque o valor deste produto
       </div>
       
+      <div class="col-md-6 mb-3">
+      <label for="inputEstado">Cliente</label>
+      <select id="inputEstado" class="form-control">
+        <option selected>Escolher...</option>
+        <option>Cabine</option>
+        <option>Totem</option>
+        <option>Espelho</option>
+		</select>
+       </div>
+       
      <div class="col-md-6 mb-3">
       <label for="validationTooltip03">Valor venda</label>
       <input type="text" class="form-control" id="validationTooltip03" name="valorvenda" value = "" placeholder="R$ " required>
