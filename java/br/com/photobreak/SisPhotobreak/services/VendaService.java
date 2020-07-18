@@ -27,4 +27,8 @@ public class VendaService {
 	public Venda insert(Venda obj) {
 		return repository.save(obj);
 	}
+	
+	public void detele(Long id) {
+		repository.deleteById(id);
+	}
 }

@@ -40,17 +40,19 @@
 				<tr>
 					<th>Cliente</th>
 					<th>Produto</th>
+					<th>Valor Venda</th>
 					<th>Data Venda</th>
 					<th>Editar</th>
 					<th>Excluir</th>
 				</tr>
 				<c:forEach var="user" items="${venda}">
 					<tr>
-						<td>${user.nomecli}</td>
-						<td>${user.nomeprod}</td>
+						<td>${user.cliente}</td>
+						<td>${user.produto}</td>
+						<td>${user.valorVenda}</td>
 						<td>${user.dataVenda}</td>
 						<td WIDTH="7%"><button type="button" class="btn btn-info btn-sm">Editar</button>
-						<td WIDTH="7%"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ExemploModalCentralizado">Excluir</button>
+						<td WIDTH="7%"><a href="excluirvenda?id=${user.id}"><button type="button" class="btn btn-danger btn-sm">Excluir</button></a>
 					</tr>
 				</c:forEach>
 			</table>

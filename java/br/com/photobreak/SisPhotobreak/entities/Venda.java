@@ -20,8 +20,7 @@ public class Venda implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nomecli;
-	private String nomeprod;
+	private String valorVenda;
 	private String dataVenda;
 	
 	@ManyToOne
@@ -38,21 +37,19 @@ public class Venda implements Serializable{
 	public Venda() {
 	}
 	
-	public Venda(Long id, String nomecli, String nomeprod, String dataVenda, Cliente cliente, Produto produto) {
+	public Venda(Long id, String valorVenda, String dataVenda, Cliente cliente, Produto produto) {
 		super();
 		this.id = id;
-		this.nomecli = nomecli;
-		this.nomeprod = nomeprod;
+		this.valorVenda = valorVenda;
 		this.dataVenda = dataVenda;
 		this.cliente = cliente;
 		this.produto = produto;
 	}
 	
-	public Venda(Long id, String nomecli, String nomeprod, String dataVenda) {
+	public Venda(Long id, String valorVenda, String dataVenda) {
 		super();
 		this.id = id;
-		this.nomecli = nomecli;
-		this.nomeprod = nomeprod;
+		this.valorVenda = valorVenda;
 		this.dataVenda = dataVenda;
 	}
 
@@ -62,6 +59,14 @@ public class Venda implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getValorVenda() {
+		return valorVenda;
+	}
+
+	public void setValorVenda(String valorVenda) {
+		this.valorVenda = valorVenda;
 	}
 
 	public String getDataVenda() {
@@ -80,22 +85,6 @@ public class Venda implements Serializable{
 
 	public Produto getProduto() {
 		return produto;
-	}
-	
-	public String getNomecli() {
-		return nomecli;
-	}
-
-	public void setNomecli(String nomecli) {
-		this.nomecli = nomecli;
-	}
-
-	public String getNomeprod() {
-		return nomeprod;
-	}
-
-	public void setNomeprod(String nomeprod) {
-		this.nomeprod = nomeprod;
 	}
 
 	@Override

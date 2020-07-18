@@ -102,7 +102,6 @@ public class UsuarioResource {
 	@GetMapping(value="/excluir")
 	public String delete(Long id, HttpServletRequest request){
 		id = Long.parseLong(request.getParameter("id"));
-		System.out.println(id);
 		service.detele(id);
 		return "redirect:/usuarios";
 	}

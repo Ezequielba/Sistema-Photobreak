@@ -55,9 +55,9 @@ public class TestConfig implements CommandLineRunner {
 		Produto p3 = new Produto(null, "Espelho de fotos", "1500.00");
 		Produto p4 = new Produto(null, "Lambe-Lambe", "1400.00");
 		
-		Venda v1 = new Venda(null, c1.getNome(), p3.getNome(), "01/05/2020", c1, p2);
-		Venda v2 = new Venda(null, c2.getNome(), p1.getNome(), "10/02/2018", c2, p1);
-		Venda v3 = new Venda(null, c3.getNome(), p2.getNome(), "15/08/2022");
+		Venda v1 = new Venda(null, "600,00", "01/05/2020", c1, p2);
+		Venda v2 = new Venda(null, "380,00", "10/02/2018", c2, p1);
+		//Venda v3 = new Venda(null, c3.getNome(), p2.getNome(), "15/08/2022");
 		
 		Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 0.0, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 900.00, c1, v2, p2);
 		
@@ -66,7 +66,7 @@ public class TestConfig implements CommandLineRunner {
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
 		vendaRepository.saveAll(Arrays.asList(v1));
 		vendaRepository.saveAll(Arrays.asList(v2));
-		vendaRepository.saveAll(Arrays.asList(v3));
+		//vendaRepository.saveAll(Arrays.asList(v3));
 		parcelaRepository.saveAll(Arrays.asList(pa1));
 		
 		System.out.println();

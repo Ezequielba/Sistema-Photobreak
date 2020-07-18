@@ -39,6 +39,11 @@
       <div class="invalid-tooltip">
         Por favor, coloque o valor deste produto
       </div>
+      
+     <div class="col-md-6 mb-3">
+      <label for="validationTooltip03">Valor venda</label>
+      <input type="text" class="form-control" id="validationTooltip03" name="valorvenda" value = "" placeholder="R$ " required>
+    </div>
     <div class="col-md-6 mb-3">
       <label for="validationTooltip03">Data da Venda</label>
       <input type="text" class="form-control" id="validationTooltip03" name="datavenda" value = "" placeholder="Data Venda" required>
