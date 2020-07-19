@@ -15,6 +15,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
+	
 </head>
 
 <body>
@@ -28,25 +29,28 @@
 		<form action="/cadvenda" method="POST">
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationTooltip01">Insira o nome do cliente</label>
-      <input type="text" class="form-control" id="validationTooltip01" name="cliente" placeholder="Cliente" required>
+      <label for="form-autocomplete">Insira o nome do cliente</label>
+      <input type="search" id="form-autocomplete" class="form-control" name="cliente" placeholder="Cliente" required>
     </div>
     </div>
   <div class="form-row">
+  <!--
     <div class="col-md-6 mb-3">
       <label for="validationTooltip03">Insira o nome do Produto</label>
       <input type="text" class="form-control" id="validationTooltip03" name="produto" value = "" placeholder="Produto" required>
       <div class="invalid-tooltip">
         Por favor, coloque o valor deste produto
       </div>
-      
+  -->    
       <div class="col-md-6 mb-3">
-      <label for="inputEstado">Cliente</label>
-      <select id="inputEstado" class="form-control">
+      <label for="inputEstado">Produto</label>
+      <select name="produto" id="inputEstado" class="form-control">
         <option selected>Escolher...</option>
-        <option>Cabine</option>
-        <option>Totem</option>
-        <option>Espelho</option>
+        
+        <c:forEach var="user" items="${produto}">
+		<option value="${user.id}">${user.nome}</option>
+		</c:forEach>
+
 		</select>
        </div>
        
@@ -66,6 +70,14 @@
 	
 
 	<!-- Bootstrap core JavaScript -->
+	<script>
+	var states = items="${produto}";
+
+
+	$('#form-autocomplete').mdbAutocomplete({
+	data: states
+	});
+	</script>
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>
 	<script src="login-util/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript"

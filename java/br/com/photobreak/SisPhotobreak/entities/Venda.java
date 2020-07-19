@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 public class Venda implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -77,7 +77,6 @@ public class Venda implements Serializable{
 		this.dataVenda = dataVenda;
 	}
 
-
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -85,6 +84,14 @@ public class Venda implements Serializable{
 
 	public Produto getProduto() {
 		return produto;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	@Override
