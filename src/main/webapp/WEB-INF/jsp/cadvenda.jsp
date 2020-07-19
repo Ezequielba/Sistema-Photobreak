@@ -15,68 +15,68 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
-	
+
 </head>
 
 <body>
 	<!-- Navigation -->
 
-<jsp:include page="menu.jsp" />
+	<jsp:include page="menu.jsp" />
 
 	<div class="container">
 		<br>
-		
+
 		<form action="/cadvenda" method="POST">
-  <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <label for="form-autocomplete">Insira o nome do cliente</label>
-      <input type="search" id="form-autocomplete" class="form-control" name="cliente" placeholder="Cliente" required>
-    </div>
-    </div>
-  <div class="form-row">
-  <!--
-    <div class="col-md-6 mb-3">
-      <label for="validationTooltip03">Insira o nome do Produto</label>
-      <input type="text" class="form-control" id="validationTooltip03" name="produto" value = "" placeholder="Produto" required>
-      <div class="invalid-tooltip">
-        Por favor, coloque o valor deste produto
-      </div>
-  -->    
-      <div class="col-md-6 mb-3">
-      <label for="inputEstado">Produto</label>
-      <select name="produto" id="inputEstado" class="form-control">
-        <option selected>Escolher...</option>
-        
-        <c:forEach var="user" items="${produto}">
-		<option value="${user.id}">${user.nome}</option>
-		</c:forEach>
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="inputCliente">Cliente</label> <select name="cliente"
+						id="inputCliente" class="form-control">
+						<option selected>Escolher...</option>
+						<c:forEach var="user" items="${cliente}">
+							<option value="${user.id}">${user.nome}</option>
+						</c:forEach>
+					</select>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="inputProduto">Produto</label> <select name="produto"
+						id="inputProduto" class="form-control">
+						<option selected>Escolher...</option>
+						<c:forEach var="user" items="${produto}">
+							<option value="${user.id}">${user.nome}</option>
+						</c:forEach>
+					</select>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="validationTooltip03">Valor venda</label> <input
+						type="text" class="form-control" id="validationTooltip03"
+						name="valorvenda" value="" placeholder="R$ " required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="validationTooltip03">Data da Venda</label> <input
+						type="text" class="form-control" id="validationTooltip03"
+						name="datavenda" value="" placeholder="Data Venda" required>
+				</div>
+			</div>
+			<button class="btn btn-primary" type="submit">Enviar</button>
+		</form>
+	</div>
 
-		</select>
-       </div>
-       
-     <div class="col-md-6 mb-3">
-      <label for="validationTooltip03">Valor venda</label>
-      <input type="text" class="form-control" id="validationTooltip03" name="valorvenda" value = "" placeholder="R$ " required>
-    </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationTooltip03">Data da Venda</label>
-      <input type="text" class="form-control" id="validationTooltip03" name="datavenda" value = "" placeholder="Data Venda" required>
-    </div>
-  </div> 
-</div>
-<button class="btn btn-primary" type="submit">Enviar</button>
-</form>
-</div>			
-	
 
-	<!-- Bootstrap core JavaScript -->
+	<!-- Bootstrap core JavaScript 
 	<script>
-	var states = items="${produto}";
+		var states = items = "${cliente}";
 
-
-	$('#form-autocomplete').mdbAutocomplete({
-	data: states
-	});
+		$('#form-autocomplete').mdbAutocomplete({
+			data : states
+		});
+	-->
+	
 	</script>
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>
 	<script src="login-util/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

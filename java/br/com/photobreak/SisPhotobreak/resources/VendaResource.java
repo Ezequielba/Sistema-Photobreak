@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import br.com.photobreak.SisPhotobreak.entities.Cliente;
 import br.com.photobreak.SisPhotobreak.entities.Produto;
 import br.com.photobreak.SisPhotobreak.entities.Venda;
+import br.com.photobreak.SisPhotobreak.services.ClienteService;
 import br.com.photobreak.SisPhotobreak.services.ProdutoService;
 import br.com.photobreak.SisPhotobreak.services.VendaService;
 
@@ -26,7 +27,7 @@ public class VendaResource {
 	private ProdutoService produto;
 	
 	@Autowired
-	private ProdutoService cliente;
+	private ClienteService cliente;
 
 	@RequestMapping({ "/venda" })
 	public String Lista(Model model) {
@@ -55,11 +56,10 @@ public class VendaResource {
 		Produto p1 = new Produto();
 		c1.setId(Long.parseLong(cliente));
 		p1.setId(Long.parseLong(produto));
-		//Venda vendas = new Venda(null, valorvenda, datavenda);
-		Venda v1 = new Venda(null, "600,00", "01/05/2020", c1, p1);
+		Venda v1 = new Venda(null, valorvenda, datavenda, c1, p1);
 		
 		System.out.println("");
-		System.out.print(cliente + " | " + valorvenda + " | " + produto + " | " + datavenda);
+		System.out.print(cliente + " | " + valorvenda + " | " + produto + " | " + datavenda + " | " + c1 + " | " + p1);
 		System.out.println("");
 		System.out.println("");
 		

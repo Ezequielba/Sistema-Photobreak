@@ -57,7 +57,6 @@ public class TestConfig implements CommandLineRunner {
 		
 		Venda v1 = new Venda(null, "600,00", "01/05/2020", c1, p2);
 		Venda v2 = new Venda(null, "380,00", "10/02/2018", c2, p1);
-		//Venda v3 = new Venda(null, c3.getNome(), p2.getNome(), "15/08/2022");
 		
 		Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 0.0, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 900.00, c1, v2, p2);
 		
@@ -70,8 +69,7 @@ public class TestConfig implements CommandLineRunner {
 		parcelaRepository.saveAll(Arrays.asList(pa1));
 		
 		System.out.println();
-		System.out.println("Informações da venda:");
-		System.out.println(v1.getId() + " - Produto: " + p1.getNome() + " - Cliente: " + c1.getNome() + " - Usuário: " + u1.getNome());
+		System.out.println("### PROGRAMA INICIADO COM SUCESSO!!! ###");
 
 	}
 }
