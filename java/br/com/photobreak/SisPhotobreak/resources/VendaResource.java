@@ -1,8 +1,11 @@
 package br.com.photobreak.SisPhotobreak.resources;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +25,10 @@ public class VendaResource {
 
 	@Autowired
 	private VendaService venda;
-	
+
 	@Autowired
 	private ProdutoService produto;
-	
+
 	@Autowired
 	private ClienteService cliente;
 
@@ -41,14 +44,19 @@ public class VendaResource {
 
 	@RequestMapping({ "/cadvenda" })
 	public String cadVenda(Model model) {
-		 model.addAttribute("produto", produto.findAll());
-		 model.addAttribute("cliente", cliente.findAll());
+		model.addAttribute("produto", produto.findAll());
+		model.addAttribute("cliente", cliente.findAll());
 		return "cadvenda";
+	}
+	
+	@GetMapping(value = "/listaClientes")
+	public ResponseEntity<List<Cliente>> findAll() {
+		List<Cliente> list = cliente.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 
 	@PostMapping(value = "/cadvenda")
-	public String insert(HttpServletRequest request, 
-			@RequestParam(value = "cliente", required = false) String cliente,
+	public String insert(HttpServletRequest request, @RequestParam(value = "cliente", required = false) String cliente,
 			@RequestParam(value = "valorvenda", required = false) String valorvenda,
 			@RequestParam(value = "produto", required = false) String produto,
 			@RequestParam(value = "datavenda", required = false) String datavenda) {
@@ -57,16 +65,18 @@ public class VendaResource {
 		c1.setId(Long.parseLong(cliente));
 		p1.setId(Long.parseLong(produto));
 		Venda v1 = new Venda(null, valorvenda, datavenda, c1, p1);
-		
+
 		System.out.println("");
 		System.out.print(cliente + " | " + valorvenda + " | " + produto + " | " + datavenda + " | " + c1 + " | " + p1);
 		System.out.println("");
 		System.out.println("");
-		
+
 		venda.insert(v1);
-		
+
 		return "redirect:/venda";
 	}
+
+	
 
 	@GetMapping(value = "/excluirvenda")
 	public String delete(Long id, HttpServletRequest request) {

@@ -15,6 +15,10 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
 
 </head>
 
@@ -38,6 +42,16 @@
 					</select>
 				</div>
 			</div>
+
+			<!-- <div class="form-row">
+				<div class="col-md-4 mb-3">
+					<div class="ui-widget">
+						<label for="tags">Tags: </label> <input id="tags">
+					</div>
+				</div>
+			</div> -->
+
+
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 					<label for="inputProduto">Produto</label> <select name="produto"
@@ -67,24 +81,35 @@
 		</form>
 	</div>
 
+<!-- 	<script>
+		$(function() {
+			var nome = [];
+			$.ajax({
+				url : '<c:url value="/listaClientes"/>',
+				type : 'GET',
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						nome.push(data[i]["nome"]);
+						console.log(nome);
+					}
+				}
+			});
 
-	<!-- Bootstrap core JavaScript 
-	<script>
-		var states = items = "${cliente}";
-
-		$('#form-autocomplete').mdbAutocomplete({
-			data : states
+			$("#tags").autocomplete({
+				source : nome
+			});
 		});
-	-->
-	
-	</script>
+	</script> -->
+
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>
 	<script src="login-util/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	<!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
+	-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
 		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"

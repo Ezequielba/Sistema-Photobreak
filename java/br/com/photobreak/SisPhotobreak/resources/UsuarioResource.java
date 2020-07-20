@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -64,6 +66,21 @@ public class UsuarioResource {
 		return "redirect:/login";
 	}
 	
+	@PostMapping(value="/editarusuario")
+	public String alterar(HttpServletRequest request, 
+	        @RequestParam(value="nome", required=false) String nome, 
+	        @RequestParam(value="telefone", required=false) String telefone,
+	        @RequestParam(value="email", required=false) String email,
+	        @RequestParam(value="senha", required=false) String senha
+	        ){
+		System.out.println(nome);
+		Usuario usuario = new Usuario(null, nome, telefone, email, senha);
+		service.insert(usuario);
+		
+		System.out.println(usuario.getNome());
+		return"redirect:/cadusuario";
+	}	
+	
 	@RequestMapping({"/cadusuario"})
 	public String Lista(){
 		//model.addAttribute("produto", produto.findAll());
@@ -97,13 +114,17 @@ public class UsuarioResource {
 		return ResponseEntity.ok().body(obj);
 	}
 
-
-
 	@GetMapping(value="/excluir")
 	public String delete(Long id, HttpServletRequest request){
 		id = Long.parseLong(request.getParameter("id"));
 		service.detele(id);
 		return "redirect:/usuarios";
+	}
+	
+	@PutMapping(value="/{id}")
+	public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario obj){
+		obj = service.update(id, obj);
+		return ResponseEntity.ok().body(obj);
 	}
 
 }

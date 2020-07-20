@@ -23,7 +23,7 @@ public class UsuarioService {
 		Optional<Usuario> obj = repository.findById(id);
 		return obj.get();
 	}
-	
+
 	public Usuario insert(Usuario obj) {
 		return repository.save(obj);
 	}
@@ -32,6 +32,19 @@ public class UsuarioService {
 		repository.deleteById(id);
 	}
 	
+	public Usuario update(Long id, Usuario obj) {
+		Usuario entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+	
+	private void updateData(Usuario entity, Usuario obj) {
+		entity.setNome(obj.getNome());;
+		entity.setEmail(obj.getEmail());
+		entity.setTelefone(obj.getTelefone());
+		entity.setSenha(obj.getSenha());
+	}
+
 	public boolean usuarioValido(String email, String senha){
 		List<Usuario> list = findAll();
 		for (Usuario usuario : list) {
