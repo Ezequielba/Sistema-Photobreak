@@ -60,8 +60,8 @@
 						<td>${user.nome}</td>
 						<td>${user.email}</td>
 						<td>${user.telefone}</td>
-						<td WIDTH="7%"><button type="button"
-								class="btn btn-info btn-sm">Editar</button>
+						<td WIDTH="7%"><a href="editarusuario?id=${user.id}"><button type="button"
+								class="btn btn-info btn-sm">Editar</button></a>
 						<td WIDTH="7%"><a href="excluir?id=${user.id}"><button
 									type="button" class="btn btn-danger btn-sm">Excluir</button></a>
 <!-- Adicionar estes modais no button -- data-toggle="modal" data-target="#ExemploModalCentralizado" -->

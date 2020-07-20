@@ -66,8 +66,17 @@ public class UsuarioResource {
 		return "redirect:/login";
 	}
 	
+	@GetMapping({"/editarusuario"})
+	public String editar(Long id, Model model, HttpServletRequest request){
+		System.out.print("Teste: " + id );
+		id = Long.parseLong(request.getParameter("id"));
+		 model.addAttribute("usuario", service.findById(id));
+		return "/editarusuario";
+	}
+	
 	@PostMapping(value="/editarusuario")
-	public String alterar(HttpServletRequest request, 
+	public String editar(HttpServletRequest request, 
+			@RequestParam(value="id", required=false) Long id,
 	        @RequestParam(value="nome", required=false) String nome, 
 	        @RequestParam(value="telefone", required=false) String telefone,
 	        @RequestParam(value="email", required=false) String email,
@@ -75,11 +84,12 @@ public class UsuarioResource {
 	        ){
 		System.out.println(nome);
 		Usuario usuario = new Usuario(null, nome, telefone, email, senha);
-		service.insert(usuario);
+		service.update(id, usuario);
 		
 		System.out.println(usuario.getNome());
-		return"redirect:/cadusuario";
-	}	
+		return"redirect:/usuarios";
+	}
+	
 	
 	@RequestMapping({"/cadusuario"})
 	public String Lista(){
@@ -120,11 +130,11 @@ public class UsuarioResource {
 		service.detele(id);
 		return "redirect:/usuarios";
 	}
-	
+
 	@PutMapping(value="/{id}")
-	public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario obj){
+	public String update(@PathVariable Long id, @RequestBody Usuario obj){
 		obj = service.update(id, obj);
-		return ResponseEntity.ok().body(obj);
+		return "redirect:/usuarios";
 	}
 
 }
