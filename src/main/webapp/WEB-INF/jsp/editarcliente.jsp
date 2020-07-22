@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -54,13 +53,13 @@
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-5">
-					<label for="inputAddress2">Endereço Cliente</label> <input
+					<label for="inputAddress2">EndereÃ§o Cliente</label> <input
 						type="text" class="form-control" id="inputAddress2"
 						name="enderecocliente" value="${cliente.enderecocliente}"
 						placeholder="Apartamento, hotel, casa, etc.">
 				</div>
 				<div class="form-group col-md-5">
-					<label for="inputAddress2">Endereço Evento</label> <input
+					<label for="inputAddress2">EndereÃ§o Evento</label> <input
 						type="text" class="form-control" id="inputAddress2"
 						name="enderecoevento" value="${cliente.enderecoevento}"
 						placeholder="Monte Castelo, Isadora Cortez...">
@@ -70,7 +69,7 @@
 				<div class="form-group col-md-3">
 					<label for="inputCity">Cidade</label> <input type="text"
 						class="form-control" id="inputCity" name="cidade"
-						value="${cliente.cidade}" placeholder="São Paulo, São Caetano...">
+						value="${cliente.cidade}" placeholder="SÃ£o Paulo, SÃ£o Caetano...">
 				</div>
 				<div class="form-group col-md-2">
 					<label for="inputCEP">CEP</label> <input type="text"
@@ -90,8 +89,8 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="TituloModalCentralizado">Wow! Você
-						está excluindo um cliente.</h5>
+					<h5 class="modal-title" id="TituloModalCentralizado">Wow! VocÃª
+						estÃ¡ excluindo um cliente.</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Fechar">
 						<span aria-hidden="true">&times;</span>
@@ -102,7 +101,7 @@
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Fechar</button>
 					<button type="button" class="btn btn-primary">Salvar
-						mudanças</button>
+						mudanÃ§as</button>
 				</div>
 			</div>
 		</div>

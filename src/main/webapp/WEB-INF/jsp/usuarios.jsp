@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -38,7 +37,7 @@
 
 	<div class="container">
 		<header>
-			<h1>Lista de usu·rios:</h1>
+			<h1>Lista de usu√°rios:</h1>
 			<a href="cadusuario"><button type="button"
 					class="btn btn-primary btn-lg">Novo</button></a> <br></br>
 		</header>
@@ -79,7 +78,7 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="TituloModalCentralizado">Eita! VocÍ est· excluindo um usu·rio.</h5>
+					<h5 class="modal-title" id="TituloModalCentralizado">Eita! Voc√™ est√° excluindo um usu√°rio.</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Fechar">
 						<span aria-hidden="true">&times;</span>
@@ -89,7 +88,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Fechar</button>
-					<button type="button" class="btn btn-primary">Salvar mudanÁas</button>
+					<button type="button" class="btn btn-primary">Salvar mudan√ßas</button>
 				</div>
 			</div>
 		</div>

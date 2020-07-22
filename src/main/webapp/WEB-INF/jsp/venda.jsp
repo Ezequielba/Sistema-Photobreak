@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -64,17 +63,17 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Cuidado! Você está excluindo uma venda.</h5>
+        <h5 class="modal-title" id="TituloModalCentralizado">Cuidado! VocÃª estÃ¡ excluindo uma venda.</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      Já conversou com o cliente? Tem certeza?
+      JÃ¡ conversou com o cliente? Tem certeza?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        <button type="button" class="btn btn-primary">Salvar mudanÃ§as</button>
       </div>
     </div>
   </div>

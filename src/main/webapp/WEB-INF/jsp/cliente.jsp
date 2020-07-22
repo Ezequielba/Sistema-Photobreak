@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -8,6 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Photobreak</title>
+<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
 <!-- Bootstrap core CSS -->
 <link href="login-util/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -41,7 +41,7 @@
 					<th>Nome</th>
 					<th>Telefone</th>
 					<th>Email</th>
-					<th>Endere�o Cliente</th>
+					<th>Endereço Cliente</th>
 					<th>Data Evento</th>
 					<th>Editar</th>
 					<th>Excluir</th>
@@ -66,7 +66,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Wow! Voc� est� excluindo um cliente.</h5>
+        <h5 class="modal-title" id="TituloModalCentralizado">Wow! Você está excluindo um cliente.</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -77,7 +77,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudan�as</button>
+        <button type="button" class="btn btn-primary">Salvar mudanças</button>
       </div>
     </div>
   </div>
