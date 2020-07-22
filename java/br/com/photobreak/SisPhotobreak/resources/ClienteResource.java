@@ -51,7 +51,7 @@ public class ClienteResource {
 	        @RequestParam(value="enderecoevento", required=false) String enderecoevento,
 	        @RequestParam(value="cidade", required=false) String cidade,
 	        @RequestParam(value="cep", required=false) String cep,
-	        @RequestParam(value="dataevento", required=false) Instant dataevento
+	        @RequestParam(value="dataevento", required=false) String dataevento
 	        ){
 		Cliente clientes = new Cliente(null, nome, telefone, email, enderecocliente, enderecoevento, cidade, cep, dataevento);
 		service.insert(clientes);
@@ -84,7 +84,7 @@ public class ClienteResource {
 	        @RequestParam(value="enderecoevento", required=false) String enderecoevento,
 	        @RequestParam(value="cidade", required=false) String cidade,
 	        @RequestParam(value="cep", required=false) String cep,
-	        @RequestParam(value="dataevento", required=false) Instant dataevento
+	        @RequestParam(value="dataevento", required=false) String dataevento
 	        ){
 		Cliente cliente = new Cliente(null, nome, telefone, email, enderecocliente, enderecoevento, cidade, cep, dataevento);		
 		service.update(id, cliente);

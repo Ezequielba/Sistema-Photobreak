@@ -1,7 +1,6 @@
 package br.com.photobreak.SisPhotobreak.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class Cliente implements Serializable{
 	private String enderecoevento;
 	private String cidade;
 	private String cep;
-	private Instant dataevento;
+	private String dataevento;
 	
 	
 	@OneToMany(mappedBy = "cliente")
@@ -38,7 +37,7 @@ public class Cliente implements Serializable{
 	public Cliente() {
 	}
 	
-	public Cliente(Long id, String nome, String telefone, String email, String enderecocliente, Instant dataevento) {
+	public Cliente(Long id, String nome, String telefone, String email, String enderecocliente, String dataevento) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -48,7 +47,7 @@ public class Cliente implements Serializable{
 		this.dataevento = dataevento;
 	}
 
-	public Cliente(Long id, String nome, String telefone, String email, String enderecocliente, String enderecoevento, String cidade, String cep, Instant dataevento) {
+	public Cliente(Long id, String nome, String telefone, String email, String enderecocliente, String enderecoevento, String cidade, String cep, String dataevento) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -125,11 +124,11 @@ public class Cliente implements Serializable{
 		this.cep = cep;
 	}
 
-	public Instant getDataevento() {
+	public String getDataevento() {
 		return dataevento;
 	}
 
-	public void setDataevento(Instant dataevento) {
+	public void setDataevento(String dataevento) {
 		this.dataevento = dataevento;
 	}
 
