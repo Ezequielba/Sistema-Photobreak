@@ -53,7 +53,7 @@
 						<td>${user.email}</td>
 						<td>${user.enderecocliente}</td>
 						<td>${user.dataevento}</td>
-						<td WIDTH="7%"><button type="button" class="btn btn-info btn-sm">Editar</button>
+						<td WIDTH="7%"><a href="editarcliente?id=${user.id}"><button type="button" class="btn btn-info btn-sm">Editar</button></a>
 						<td WIDTH="7%"><a href="excluircli?id=${user.id}"><button type="button" class="btn btn-danger btn-sm">Excluir</button></a>
 					</tr>
 				</c:forEach>

@@ -82,11 +82,8 @@ public class UsuarioResource {
 	        @RequestParam(value="email", required=false) String email,
 	        @RequestParam(value="senha", required=false) String senha
 	        ){
-		System.out.println(nome);
 		Usuario usuario = new Usuario(null, nome, telefone, email, senha);
 		service.update(id, usuario);
-		
-		System.out.println(usuario.getNome());
 		return"redirect:/usuarios";
 	}
 	

@@ -31,4 +31,17 @@ public class VendaService {
 	public void detele(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public Venda update(Long id, Venda obj) {
+		Venda entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+	
+	private void updateData(Venda entity, Venda obj) {
+		entity.setValorVenda(obj.getValorVenda());
+		entity.setDataVenda(obj.getDataVenda());
+		entity.setCliente(obj.getCliente());
+		entity.setProduto(obj.getProduto());
+	}
 }

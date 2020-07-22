@@ -32,4 +32,20 @@ public class ClienteService {
 		return repository.save(obj);
 	}
 	
+	public Cliente update(Long id, Cliente obj) {
+		Cliente entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+	
+	private void updateData(Cliente entity, Cliente obj) {
+		entity.setNome(obj.getNome());;
+		entity.setTelefone(obj.getTelefone());
+		entity.setEmail(obj.getEmail());
+		entity.setEnderecocliente(obj.getEnderecocliente());
+		entity.setEnderecoevento(obj.getEnderecoevento());
+		entity.setCidade(obj.getCidade());
+		entity.setCep(obj.getCep());
+		entity.setDataevento(obj.getDataevento());
+	}
 }

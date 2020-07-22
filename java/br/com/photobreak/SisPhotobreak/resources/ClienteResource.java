@@ -25,11 +25,11 @@ public class ClienteResource {
 	boolean loginValido = false;
 	
 	@Autowired
-	private ClienteService cliente;
+	private ClienteService service;
 
 	@RequestMapping({"/cliente"})
 	public String Lista(Model model){
-		model.addAttribute("cliente", cliente.findAll());
+		model.addAttribute("cliente", service.findAll());
 			 return "cliente";
 	}
 	
@@ -51,9 +51,7 @@ public class ClienteResource {
 	        @RequestParam(value="dataevento", required=false) Instant dataevento
 	        ){
 		Cliente clientes = new Cliente(null, nome, telefone, email, enderecocliente, enderecoevento, cidade, cep, dataevento);
-		cliente.insert(clientes);
-		
-		System.out.println(clientes.getNome());
+		service.insert(clientes);
 		return"redirect:/cliente";
 	}
 	
@@ -61,8 +59,33 @@ public class ClienteResource {
 	public String delete(Long id, HttpServletRequest request){
 		id = Long.parseLong(request.getParameter("id"));
 		System.out.println(id);
-		cliente.detele(id);
+		service.detele(id);
 		return "redirect:/cliente";
+	}
+	
+	
+	@GetMapping({"/editarcliente"})
+	public String editar(Long id, Model model, HttpServletRequest request){
+		id = Long.parseLong(request.getParameter("id"));
+		 model.addAttribute("cliente", service.findById(id));
+		return "/editarcliente";
+	}
+	
+	@PostMapping(value="/editarcliente")
+	public String editar(HttpServletRequest request, 
+			@RequestParam(value="id", required=false) Long id,
+	        @RequestParam(value="nome", required=false) String nome, 
+	        @RequestParam(value="telefone", required=false) String telefone,
+	        @RequestParam(value="email", required=false) String email,
+	        @RequestParam(value="enderecocliente", required=false) String enderecocliente,
+	        @RequestParam(value="enderecoevento", required=false) String enderecoevento,
+	        @RequestParam(value="cidade", required=false) String cidade,
+	        @RequestParam(value="cep", required=false) String cep,
+	        @RequestParam(value="dataevento", required=false) Instant dataevento
+	        ){
+		Cliente cliente = new Cliente(null, nome, telefone, email, enderecocliente, enderecoevento, cidade, cep, dataevento);		
+		service.update(id, cliente);
+		return"redirect:/cliente";
 	}
 
 /*	@GetMapping
@@ -79,7 +102,7 @@ public class ClienteResource {
 */	
 	@PostMapping
 	public ResponseEntity<Cliente> insert(@RequestBody Cliente obj){
-		obj = cliente.insert(obj);
+		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}

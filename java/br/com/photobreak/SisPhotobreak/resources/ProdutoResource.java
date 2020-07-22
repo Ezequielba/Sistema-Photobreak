@@ -17,11 +17,11 @@ import br.com.photobreak.SisPhotobreak.services.ProdutoService;
 public class ProdutoResource {
 	
 	@Autowired
-	private ProdutoService produto;
+	private ProdutoService service;
 	
 	@RequestMapping({"/produto"})
 	public String Lista(Model model){
-		model.addAttribute("produto", produto.findAll());
+		model.addAttribute("produto", service.findAll());
 			 return "produto";
 	}
 	
@@ -37,18 +37,35 @@ public class ProdutoResource {
 	        @RequestParam(value="valor", required=false) String valor
 	        ){
 		Produto produtos = new Produto(null, nome, valor);
-		produto.insert(produtos);
+		service.insert(produtos);
 		return"redirect:/produto";
 	}
+	
+	@GetMapping({"/editarproduto"})
+	public String editar(Long id, Model model, HttpServletRequest request){
+		id = Long.parseLong(request.getParameter("id"));
+		 model.addAttribute("produto", service.findById(id));
+		return "/editarproduto";
+	}
+	
+	@PostMapping(value="/editarproduto")
+	public String editar(HttpServletRequest request, 
+			@RequestParam(value="id", required=false) Long id,
+	        @RequestParam(value="nome", required=false) String nome, 
+	        @RequestParam(value="valor", required=false) String valor
+	        ){
+		Produto produto = new Produto(null, nome, valor);		
+		service.update(id, produto);
+		return"redirect:/produto";
+	}
+	
 	
 	@GetMapping(value="/excluirprod")
 	public String delete(Long id, HttpServletRequest request){
 		id = Long.parseLong(request.getParameter("id"));
-		System.out.println(id);
-		produto.detele(id);
+		service.detele(id);
 		return "redirect:/produto";
 	}
-
 
 /*
 	@GetMapping

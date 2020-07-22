@@ -31,4 +31,15 @@ public class ProdutoService {
 	public void detele(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public Produto update(Long id, Produto obj) {
+		Produto entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+	
+	private void updateData(Produto entity, Produto obj) {
+		entity.setNome(obj.getNome());;
+		entity.setValor(obj.getValor());
+	}
 }

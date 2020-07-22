@@ -51,7 +51,7 @@
 						<td>${user.produto}</td>
 						<td>${user.valorVenda}</td>
 						<td>${user.dataVenda}</td>
-						<td WIDTH="7%"><button type="button" class="btn btn-info btn-sm">Editar</button>
+						<td WIDTH="7%"><a href="editarvenda?id=${user.id}"><button type="button" class="btn btn-info btn-sm">Editar</button></a>
 						<td WIDTH="7%"><a href="excluirvenda?id=${user.id}"><button type="button" class="btn btn-danger btn-sm">Excluir</button></a>
 					</tr>
 				</c:forEach>

@@ -25,31 +25,27 @@
 	<div class="container">
 		<br>
 
-		<form action="/editarusuario" method="POST">
+		<form action="/editarproduto" method="POST">
 			<input type="hidden" class="form-control" id="id" name="id" path="id"
-				value="${usuario.id}">
-			<div class="form-group">
-				<label for="exampleInputEmail1">Nome</label> <input type="text"
-					class="form-control" id="nome" name="nome" path="nome"
-					value="${usuario.nome}" placeholder="Seu nome">
+				value="${produto.id}">
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="validationTooltip01">Insira o nome do produto</label> <input
+						type="text" class="form-control" id="validationTooltip01"
+						name="nome" value="${produto.nome}" placeholder="Produto" required>
+					<div class="valid-tooltip">Tudo certo!</div>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Telefone</label> <input
-					type="text" class="form-control" id="telefone" name="telefone"
-					value="${usuario.telefone}" placeholder="Telefone">
+			<div class="form-row">
+				<div class="col-md-6 mb-3">
+					<label for="validationTooltip03">Valor</label> <input type="text"
+						class="form-control" id="validationTooltip03" name="valor"
+						value="${produto.valor}" value="R$ " placeholder="Valor" required>
+					<div class="invalid-tooltip">Por favor, coloque o valor deste
+						produto</div>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">E-mail</label> <input type="text"
-					class="form-control" id="email" name="email"
-					value="${usuario.email}" placeholder="E-mail">
-			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Senha</label> <input type="text"
-					class="form-control" id="senha" name="senha"
-					value="${usuario.senha}" placeholder="Senha">
-			</div>
-			<button type="submit" class="btn btn-primary">Salvar</button>
-
+			<button class="btn btn-primary" type="submit">Enviar</button>
 		</form>
 
 	</div>

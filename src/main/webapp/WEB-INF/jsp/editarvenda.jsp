@@ -30,7 +30,9 @@
 	<div class="container">
 		<br>
 
-		<form action="/cadvenda" method="POST">
+		<form action="/editarvenda" method="POST">
+		<input type="hidden" class="form-control" id="id" name="id" path="id"
+				value="${venda.id}">
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 					<label for="inputCliente">Cliente</label> <select name="cliente"
@@ -57,20 +59,39 @@
 				<div class="col-md-4 mb-3">
 					<label for="validationTooltip03">Valor venda</label> <input
 						type="text" class="form-control" id="validationTooltip03"
-						name="valorvenda" value="" placeholder="R$ " required>
+						name="valorvenda" value="${venda.valorVenda}" placeholder="R$ " required>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 					<label for="validationTooltip03">Data da Venda</label> <input
 						type="text" class="form-control" id="validationTooltip03"
-						name="datavenda" value="" placeholder="Data Venda" required>
+						name="datavenda" value="${venda.dataVenda}" placeholder="Data Venda" required>
 				</div>
 			</div>
 			<button class="btn btn-primary" type="submit">Enviar</button>
 		</form>
 	</div>
 
+<!-- 	<script>
+		$(function() {
+			var nome = [];
+			$.ajax({
+				url : '<c:url value="/listaClientes"/>',
+				type : 'GET',
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						nome.push(data[i]["nome"]);
+						console.log(nome);
+					}
+				}
+			});
+
+			$("#tags").autocomplete({
+				source : nome
+			});
+		});
+	</script> -->
 
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>

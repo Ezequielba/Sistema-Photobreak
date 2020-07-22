@@ -54,9 +54,53 @@ public class VendaResource {
 		List<Cliente> list = cliente.findAll();
 		return ResponseEntity.ok().body(list);
 	}
+	
+	
+	@GetMapping({"/editarvenda"})
+	public String editar(Long id, Model model, HttpServletRequest request){
+		id = Long.parseLong(request.getParameter("id"));
+		 model.addAttribute("venda", venda.findById(id));
+		 model.addAttribute("produto", produto.findAll());
+		 model.addAttribute("cliente", cliente.findAll());
+		return "/editarvenda";
+	}
+	
+	@PostMapping(value="/editarvenda")
+	public String editar(HttpServletRequest request, 
+			@RequestParam(value="id", required=false) Long id,
+	        @RequestParam(value="valorvenda", required=false) String valorvenda, 
+	        @RequestParam(value="datavenda", required=false) String datavenda,
+	        @RequestParam(value="produto", required=false) String produto,
+	        @RequestParam(value="cliente", required=false) String cliente
+	        ){
+
+		System.out.println("");
+		System.out.println("");
+		System.out.print("Primeiro: " + valorvenda + " | " + datavenda + " | " + cliente + " | " + produto);
+		System.out.println("");
+		System.out.println("");
+		
+		Cliente c1 = new Cliente();
+		Produto p1 = new Produto();
+		c1.setId(Long.parseLong(cliente));
+		p1.setId(Long.parseLong(produto));
+		
+		System.out.println("");
+		System.out.println("");
+		System.out.print("Segundo: " + valorvenda + " | " + datavenda + " | " + c1 + " | " + p1);
+		System.out.println("");
+		System.out.println("");
+		
+		Venda v1 = new Venda(null, valorvenda, datavenda, c1, p1);
+	
+		venda.update(id, v1);
+		return"redirect:/venda";
+	}
+	
 
 	@PostMapping(value = "/cadvenda")
-	public String insert(HttpServletRequest request, @RequestParam(value = "cliente", required = false) String cliente,
+	public String insert(HttpServletRequest request, 
+			@RequestParam(value = "cliente", required = false) String cliente,
 			@RequestParam(value = "valorvenda", required = false) String valorvenda,
 			@RequestParam(value = "produto", required = false) String produto,
 			@RequestParam(value = "datavenda", required = false) String datavenda) {
