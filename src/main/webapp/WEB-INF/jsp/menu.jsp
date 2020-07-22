@@ -35,6 +35,8 @@
 						</div></li>
 
 					<li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+					
+					<li class="nav-item"><a class="nav-link" href="logoff">Logoff</a></li>
 				</ul>
 			</div>
 		</div>

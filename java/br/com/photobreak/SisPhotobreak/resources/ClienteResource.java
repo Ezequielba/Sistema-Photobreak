@@ -22,7 +22,7 @@ import br.com.photobreak.SisPhotobreak.services.ClienteService;
 @Controller
 public class ClienteResource {
 	
-	boolean loginValido = false;
+	boolean loginValido = true;
 	
 	@Autowired
 	private ClienteService service;
@@ -30,7 +30,10 @@ public class ClienteResource {
 	@RequestMapping({"/cliente"})
 	public String Lista(Model model){
 		model.addAttribute("cliente", service.findAll());
+		 if(loginValido) {
 			 return "cliente";
+			 }
+		return "redirect:/login";
 	}
 	
 	@RequestMapping({"/cadcliente"})

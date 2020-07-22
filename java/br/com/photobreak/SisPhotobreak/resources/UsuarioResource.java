@@ -24,7 +24,8 @@ import br.com.photobreak.SisPhotobreak.services.UsuarioService;
 @SessionAttributes
 public class UsuarioResource {
 	
-	boolean loginValido = false;
+	boolean loginValido = true;
+	
 	
 	@Autowired
 	private UsuarioService service;
@@ -32,8 +33,7 @@ public class UsuarioResource {
 
 	@GetMapping(value = {"/","/login"})
 	public String home(Model model){
-		loginValido = false;
-		 model.addAttribute("user", new Usuario());
+		model.addAttribute("user", new Usuario());
 		return "login";
 	}
 	
@@ -64,6 +64,12 @@ public class UsuarioResource {
 			 return "/usuarios";
 			 }
 		return "redirect:/login";
+	}
+	
+	@GetMapping({"/logoff"})
+	public String Lista2(){
+		loginValido = false;
+			 return "redirect:/login";
 	}
 	
 	@GetMapping({"/editarusuario"})
