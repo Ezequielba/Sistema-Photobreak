@@ -8,6 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Photobreak</title>
 <!-- Bootstrap core CSS -->
+
 <link href="login-util/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -43,9 +44,9 @@
 						class="form-control" id="inputAddress" name="email"
 						placeholder="maria@gmail.com">
 				</div>
-				<div class="form-group col-md-2">
-					<label for="inputAddress">Data Evento</label> <input type="text"
-						class="form-control" id="inputAddress" name="dataevento"
+				<div class="form-group col-md-2" id="datetimepicker1">
+					<label for="example-date-input">Data Evento</label> <input data-format="dd/MM/yyyy" type="date"
+						class="form-control" id="datetimepicker1" name="dataevento"
 						placeholder="01/01/2020">
 				</div>
 			</div>
@@ -78,6 +79,15 @@
 
 	</form>
 </div>
+
+<script type="text/javascript">
+$(function() {
+$('#datetimepicker1').datetimepicker({
+	format: "dd/mm/yyyy"
+  language: 'pt-BR'
+});
+});
+</script>
 
 	<!-- Modal -->
 <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
@@ -117,5 +127,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
 		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
 		crossorigin="anonymous"></script>
+			
 </body>
 </html>

@@ -8,12 +8,14 @@
 <meta charset="ISO-8859-1">
 <title>Photobreak</title>
 <!-- Bootstrap core CSS -->
+
 <link href="login-util/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -45,11 +47,13 @@
 						class="form-control" id="inputAddress" name="email"
 						value="${cliente.email}" placeholder="maria@gmail.com">
 				</div>
-				<div class="form-group col-md-2">
-					<label for="inputAddress">Data Evento</label> <input type="text"
-						class="form-control" id="inputAddress" name="dataevento"
+
+				<div class="form-group col-md-2" id="datetimepicker1">
+					<label for="inputDate">Data Evento</label> <input data-format="dd/MM/yyyy" type="date"
+						class="datepicker" id="datetimepicker1" name="dataevento"
 						value="${cliente.dataevento}">
 				</div>
+
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-5">
@@ -81,6 +85,7 @@
 
 		</form>
 	</div>
+
 
 	<!-- Modal -->
 	<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1"
@@ -123,5 +128,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
 		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
 		crossorigin="anonymous"></script>
+
 </body>
 </html>

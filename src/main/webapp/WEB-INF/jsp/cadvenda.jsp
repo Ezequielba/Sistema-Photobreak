@@ -18,6 +18,31 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
+<script>
+	function hideList(input) {
+		var datalist = document.querySelector("datalist");
+
+		if (input.value) {
+			datalist.id = "clientes";
+			$(document).ready(
+					function() {
+						var data = {};
+						$("#clientes option").each(function(i, el) {
+							data[$(el).data("value")] = $(el).val();
+						});
+						var value = $('#cliente').val();
+						document.getElementById('idCliente').value = value = $(
+								'#clientes [value="' + value + '"]').data(
+								'value');
+						console.log($('#idCliente').val());
+					});
+
+		} else {
+			datalist.id = "";
+		}
+	}
+</script>
+
 
 </head>
 
@@ -32,13 +57,15 @@
 		<form action="/cadvenda" method="POST">
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
-					<label for="inputCliente">Cliente</label> <select name="cliente"
-						id="inputCliente" class="form-control">
-						<option selected>Escolher...</option>
+					<label for="cliente">Buscar Clientes</label> <input type="text"
+						class="form-control mdb-autocomplete" list="clientes" id="cliente"
+						oninput="hideList(this)" autocomplete="off"></input>
+					<datalist id="">
 						<c:forEach var="user" items="${cliente}">
-							<option value="${user.id}">${user.nome}</option>
+							<option data-value="${user.id}" value="${user.nome}"></option>
 						</c:forEach>
-					</select>
+					</datalist>
+					<input type="hidden" id="idCliente" name="cliente"></input>
 				</div>
 			</div>
 			<div class="form-row">
@@ -61,8 +88,8 @@
 			</div>
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
-					<label for="validationTooltip03">Data da Venda</label> <input
-						type="text" class="form-control" id="validationTooltip03"
+					<label for="example-date-input">Data da Venda</label> <input
+						type="date" class="form-control" id="validationTooltip03"
 						name="datavenda" value="" placeholder="Data Venda" required>
 				</div>
 			</div>

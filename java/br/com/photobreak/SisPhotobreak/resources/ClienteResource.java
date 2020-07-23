@@ -1,7 +1,6 @@
 package br.com.photobreak.SisPhotobreak.resources;
 
 import java.net.URI;
-import java.time.Instant;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +22,7 @@ import br.com.photobreak.SisPhotobreak.services.ClienteService;
 public class ClienteResource {
 	
 	boolean loginValido = true;
+
 	
 	@Autowired
 	private ClienteService service;
@@ -85,8 +85,11 @@ public class ClienteResource {
 	        @RequestParam(value="cidade", required=false) String cidade,
 	        @RequestParam(value="cep", required=false) String cep,
 	        @RequestParam(value="dataevento", required=false) String dataevento
-	        ){
-		Cliente cliente = new Cliente(null, nome, telefone, email, enderecocliente, enderecoevento, cidade, cep, dataevento);		
+	        ) {
+			
+		
+		Cliente cliente = new Cliente(null, nome, telefone, email, enderecocliente, enderecoevento, cidade, cep, dataevento);
+		
 		service.update(id, cliente);
 		return"redirect:/cliente";
 	}

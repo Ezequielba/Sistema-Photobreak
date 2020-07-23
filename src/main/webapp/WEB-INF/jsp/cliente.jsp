@@ -9,12 +9,33 @@
 <title>Photobreak</title>
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
 <!-- Bootstrap core CSS -->
+
 <link href="login-util/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
+	
+	    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker-globalize.js"></script>
+    <script src="~/Scripts/locales/bootstrap-datepicker.pt-BR.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',                
+                language: 'pt-BR'
+            });
+        });
+
+    </script>
+	
+	
 </head>
 
 <body>
@@ -99,5 +120,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
 		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
 		crossorigin="anonymous"></script>
+
 </body>
 </html>

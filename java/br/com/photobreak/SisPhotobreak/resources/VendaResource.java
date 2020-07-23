@@ -59,7 +59,7 @@ public class VendaResource {
 	@GetMapping({"/editarvenda"})
 	public String editar(Long id, Model model, HttpServletRequest request){
 		id = Long.parseLong(request.getParameter("id"));
-		 model.addAttribute("venda", venda.findById(id));
+		 model.addAttribute("venda", venda.findById(id));	 
 		 model.addAttribute("produto", produto.findAll());
 		 model.addAttribute("cliente", cliente.findAll());
 		return "/editarvenda";
