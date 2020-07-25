@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.photobreak.SisPhotobreak.entities.Cliente;
+import br.com.photobreak.SisPhotobreak.entities.Parcela;
 import br.com.photobreak.SisPhotobreak.entities.Produto;
 import br.com.photobreak.SisPhotobreak.entities.Venda;
 import br.com.photobreak.SisPhotobreak.services.ClienteService;
+import br.com.photobreak.SisPhotobreak.services.ParcelaService;
 import br.com.photobreak.SisPhotobreak.services.ProdutoService;
 import br.com.photobreak.SisPhotobreak.services.VendaService;
 
@@ -31,6 +33,9 @@ public class VendaResource {
 
 	@Autowired
 	private ClienteService cliente;
+	
+	@Autowired
+	private ParcelaService parcela;
 	
 	@RequestMapping({ "/venda" })
 	public String Lista(Model model) {
@@ -116,19 +121,9 @@ public class VendaResource {
 		System.out.println("");
 
 		venda.insert(v1);
-
-		//Convertendo String para long
-		long val = Long.valueOf(v1.getId());
-		
-		System.out.println("");
-		System.out.println("");
-		System.out.print("Pegando ID String: " + v1.getId() + " - Convertendo para long: " + val);
-		System.out.println("");
-		System.out.println("");
-		
-		//Parcela não está deixando inserir o ID da venda com val ou v1.getID:
-		//Parcela pa2 = new Parcela(null, "1/10", 100.00, 0.0, "10/02/2018", 0.0, 0.0, "10/02/2018", 900.00, cliente, val, produto);
-		//parcela.insert(pa2);
+	
+		Parcela pa2 = new Parcela(null, "1/10", 100.00, 0.0, "10/02/2018", 0.0, 0.0, "10/02/2018", 900.00, c1, v1, p1);
+		parcela.insert(pa2);
 		
 		return "redirect:/venda";
 	}
