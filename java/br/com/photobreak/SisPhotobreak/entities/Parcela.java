@@ -1,7 +1,6 @@
 package br.com.photobreak.SisPhotobreak.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,10 +20,10 @@ public class Parcela implements Serializable{
 	private String numParcela;
 	private Double valorParcela;
 	private Double reebolso;
-	private Instant dataRecebimento;
+	private String dataRecebimento;
 	private Double desconto;
 	private Double descontoMulta;
-	private Instant dataCompetencia;
+	private String dataCompetencia;
 	private Double valorPendente;
 	
 	@ManyToOne
@@ -42,8 +41,8 @@ public class Parcela implements Serializable{
 	public Parcela() {
 	}
 
-	public Parcela(Long id, String numParcela, Double valorParcela, Double reebolso, Instant dataRecebimento,
-			Double desconto, Double descontoMulta, Instant dataCompetencia, Double valorPendente, Cliente cliente,
+	public Parcela(Long id, String numParcela, Double valorParcela, Double reebolso, String dataRecebimento,
+			Double desconto, Double descontoMulta, String dataCompetencia, Double valorPendente, Cliente cliente,
 			Venda venda, Produto produto) {
 		super();
 		this.id = id;
@@ -92,11 +91,11 @@ public class Parcela implements Serializable{
 		this.reebolso = reebolso;
 	}
 
-	public Instant getDataRecebimento() {
+	public String getDataRecebimento() {
 		return dataRecebimento;
 	}
 
-	public void setDataRecebimento(Instant dataRecebimento) {
+	public void setDataRecebimento(String dataRecebimento) {
 		this.dataRecebimento = dataRecebimento;
 	}
 
@@ -116,11 +115,11 @@ public class Parcela implements Serializable{
 		this.descontoMulta = descontoMulta;
 	}
 
-	public Instant getDataCompetencia() {
+	public String getDataCompetencia() {
 		return dataCompetencia;
 	}
 
-	public void setDataCompetencia(Instant dataCompetencia) {
+	public void setDataCompetencia(String dataCompetencia) {
 		this.dataCompetencia = dataCompetencia;
 	}
 
@@ -168,4 +167,5 @@ public class Parcela implements Serializable{
 			return false;
 		return true;
 	}
+
 }

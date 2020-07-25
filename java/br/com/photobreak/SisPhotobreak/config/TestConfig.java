@@ -8,10 +8,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import br.com.photobreak.SisPhotobreak.entities.Cliente;
+import br.com.photobreak.SisPhotobreak.entities.Parcela;
 import br.com.photobreak.SisPhotobreak.entities.Produto;
 import br.com.photobreak.SisPhotobreak.entities.Usuario;
 import br.com.photobreak.SisPhotobreak.entities.Venda;
 import br.com.photobreak.SisPhotobreak.repositories.ClienteRepository;
+import br.com.photobreak.SisPhotobreak.repositories.ParcelaRepository;
 import br.com.photobreak.SisPhotobreak.repositories.ProdutoRepository;
 import br.com.photobreak.SisPhotobreak.repositories.UsuarioRepository;
 import br.com.photobreak.SisPhotobreak.repositories.VendaRepository;
@@ -32,8 +34,8 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private VendaRepository vendaRepository;
 	
-	//@Autowired
-	//private ParcelaRepository parcelaRepository;
+	@Autowired
+	private ParcelaRepository parcelaRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -55,7 +57,7 @@ public class TestConfig implements CommandLineRunner {
 		Venda v1 = new Venda(null, "600,00", "01/05/2020", c1, p2);
 		Venda v2 = new Venda(null, "380,00", "10/02/2018", c2, p1);
 		
-		//Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 0.0, 0.0, Instant.parse("2020-08-01T12:00:00Z"), 900.00, c1, v2, p2);
+		Parcela pa1 = new Parcela(null, "1/10", 100.00, 0.0, "10/02/2018", 0.0, 0.0, "10/02/2018", 900.00, c1, v2, p2);
 		
 		usuarioRepository.saveAll(Arrays.asList(u1, u2));
 		clienteRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
@@ -64,7 +66,7 @@ public class TestConfig implements CommandLineRunner {
 		vendaRepository.saveAll(Arrays.asList(v1));
 		vendaRepository.saveAll(Arrays.asList(v2));
 		//vendaRepository.saveAll(Arrays.asList(v3));
-		//parcelaRepository.saveAll(Arrays.asList(pa1));
+		parcelaRepository.saveAll(Arrays.asList(pa1));
 		
 		System.out.println();
 		System.out.println("### PROGRAMA INICIADO COM SUCESSO!!! ###");

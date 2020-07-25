@@ -31,7 +31,7 @@ public class VendaResource {
 
 	@Autowired
 	private ClienteService cliente;
-
+	
 	@RequestMapping({ "/venda" })
 	public String Lista(Model model) {
 		model.addAttribute("venda", venda.findAll());
@@ -92,14 +92,14 @@ public class VendaResource {
 		System.out.println("");
 		
 		Venda v1 = new Venda(null, valorvenda, datavenda, c1, p1);
-	
+		
 		venda.update(id, v1);
 		return"redirect:/venda";
 	}
 	
 
 	@PostMapping(value = "/cadvenda")
-	public String insert(HttpServletRequest request, 
+	public String insert(HttpServletRequest request,
 			@RequestParam(value = "cliente", required = false) String cliente,
 			@RequestParam(value = "valorvenda", required = false) String valorvenda,
 			@RequestParam(value = "produto", required = false) String produto,
@@ -109,7 +109,7 @@ public class VendaResource {
 		c1.setId(Long.parseLong(cliente));
 		p1.setId(Long.parseLong(produto));
 		Venda v1 = new Venda(null, valorvenda, datavenda, c1, p1);
-
+		
 		System.out.println("");
 		System.out.print(cliente + " | " + valorvenda + " | " + produto + " | " + datavenda + " | " + c1 + " | " + p1);
 		System.out.println("");
@@ -117,6 +117,19 @@ public class VendaResource {
 
 		venda.insert(v1);
 
+		//Convertendo String para long
+		long val = Long.valueOf(v1.getId());
+		
+		System.out.println("");
+		System.out.println("");
+		System.out.print("Pegando ID String: " + v1.getId() + " - Convertendo para long: " + val);
+		System.out.println("");
+		System.out.println("");
+		
+		//Parcela não está deixando inserir o ID da venda com val ou v1.getID:
+		//Parcela pa2 = new Parcela(null, "1/10", 100.00, 0.0, "10/02/2018", 0.0, 0.0, "10/02/2018", 900.00, cliente, val, produto);
+		//parcela.insert(pa2);
+		
 		return "redirect:/venda";
 	}
 
