@@ -17,6 +17,8 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script>
 	function hideList(input) {
@@ -42,6 +44,58 @@
 		}
 	}
 </script>
+
+
+<script type="text/javascript">
+	//Funcao para atualizar as parcelas e seus valores
+	function atualizaValores() {
+		// pegando a quantidade de parcelas
+		var valor = $("#n-parcelas").val();
+
+		//variavel que recebe os inputs(HTML)
+		var geraInputs = "";
+
+		//Calculando o valor de cada parcela
+		var valorParcela = parseFloat($(".total").val() / valor).toFixed(2);
+
+		//gerando os inputs com os valores de cada parcela
+		for (var i = 0; i < valor; i++) {
+			geraInputs += "<tr><td> <input class='table table-striped table-hover table-condensed table-bordered' type='text' name='parcela[]' value='"+valorParcela+"'></td> <td><input class='table table-striped table-hover table-condensed table-bordered' type='date' value=''></td></tr>";
+			}
+
+		// inserindo as parcelas 
+		$("#parcelas").html(geraInputs);
+	}
+
+	$(document).ready(function(e) {
+		$(".total").on('change keyup keydown keypress', function() {
+			// ao alterar o valor total, chama a funcao para alterar as parcelas
+			atualizaValores();
+
+		});
+		$('#condicao-pag').on('change', 'select', function() {
+			// ao alterar a condicao de pagamento,chama a funcao para alterar as parcelas
+			atualizaValores();
+			if ($(this).val() == 1) {
+				$('#parcelamento').show();
+				/*Calcular valor das parcelas (2x, 3x, 4x) e preencher inputs*/
+				$('#parcelas').show();
+			} else {
+				$('#parcelamento').hide();
+				$('#parcelas').hide();
+				$("input[name='parcela[]']").val('');
+			}
+		})
+
+		$('#n-parcelas').on('change', function() {
+			/*Calcular valor das parcelas (2x, 3x, 4x) e preencher inputs*/
+			//Ao alterar a quantidade e parcelas chama a funcao para alterar as parcelas
+			atualizaValores();
+		});
+
+	});
+</script>
+
 
 
 </head>
@@ -88,6 +142,61 @@
 			</div>
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
+					<label for="inputParcela">Parcela</label> <select name="parcela"
+						id="inputParcela" class="form-control">
+						<option selected>Parcela...</option>
+						<option value="1">À vista</option>
+						<option value="2">2x</option>
+						<option value="3">3x</option>
+						<option value="4">4x</option>
+						<option value="5">5x</option>
+						<option value="6">6x</option>
+						<option value="7">7x</option>
+						<option value="8">8x</option>
+						<option value="9">9x</option>
+						<option value="10">10x</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="starter-template">
+				<table>
+					<tbody>
+						<tr>
+							<td><label>Total R$</label></td>
+							<td><input type="number" min="0" class="total" value="100" /></td>
+						</tr>
+						<tr name="condicao-pag" id="condicao-pag">
+							<td><label>Condição de pagamento:</label></td>
+							<td><select />
+								<option value=0>À vista</option>
+								<option value=1>À prazo</option> </select></td>
+						</tr>
+						<tr id="parcelamento" style="display: none">
+							<td>Parcelar em</td>
+							<td><select id="n-parcelas">
+									<option></option>
+									<option value="2" selected>2x</option>
+									<option value="3">3x</option>
+									<option value="4">4x</option>
+									<option value="5">5x</option>
+									<option value="6">6x</option>
+									<option value="7">7x</option>
+									<option value="8">8x</option>
+									<option value="9">9x</option>
+									<option value="10">10x</option>
+							</select></td>
+						</tr>
+
+						<tr id="parcelas" style="display: none">
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
 					<label for="example-date-input">Data da Venda</label> <input
 						type="date" class="form-control" id="validationTooltip03"
 						name="datavenda" value="" placeholder="Data Venda" required>
@@ -96,7 +205,6 @@
 			<button class="btn btn-primary" type="submit">Enviar</button>
 		</form>
 	</div>
-
 
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>
