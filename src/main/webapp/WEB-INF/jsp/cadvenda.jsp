@@ -20,6 +20,39 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+<!-- COPIAR ESSE SCRIPT ELE QUEM PREENCHE O CAMPO DATA DA VENDA AUTOMATICAMENTE -->
+<script>
+$(document).ready(
+		function Data()
+        {
+            data = new Date();
+            var hora = data.getHours();
+            var min  = data.getMinutes();
+            var monthArray =new Array("01","02","03","04","05","06","07","08","09","10","11","12");
+            var dayArray =new Array("00","01","02","03","04","05","06","07","08","09");
+			var dia;
+            if(data.getDate() > 0 && data.getDate() < 10){
+					dia = dayArray[data.getDate()];
+                }
+            else{
+            	dia = data.getDate();
+                }
+            
+            ano = data.getFullYear();
+            dataCompleta = dia+'/'+monthArray[data.getMonth()];
+            document.getElementById('datavenda').value =ano+"-"+monthArray[data.getMonth()]+"-"+dia;
+            //document.getElementById('datavenda').value =ano+"-"+monthArray[data.getMonth()]+"-"+dia+"T"+hora+":"+min;
+		});
+</script>
+
+<script type="text/javascript">
+function check_status(obj) {
+	  var uid = obj.options[obj.selectedIndex].getAttribute('data');
+	  document.getElementById('valorVenda').value = uid;
+	}
+</script>
+
+<!-- FIM DA COPIA -->
 <script>
 	function hideList(input) {
 		var datalist = document.querySelector("datalist");
@@ -45,10 +78,23 @@
 	}
 </script>
 
-
+<!-- COPIAR ESSE E REMOVER O SEU SCRIPT DE CRICACAO DE PARCELA-->
 <script type="text/javascript">
 	//Funcao para atualizar as parcelas e seus valores
 	function atualizaValores() {
+		
+		function correcaoDia(dia) {
+		    if (isNaN(dia)) return false;
+		    
+		    return dia < 10 ? "0" + dia : dia ;
+		}
+
+		function correcaoMes(mes) {
+		    if (isNaN(mes)) return false;
+		    
+		    return mes < 10 ? "0" + mes : mes ;
+		}
+		
 		// pegando a quantidade de parcelas
 		var valor = $("#n-parcelas").val();
 
@@ -56,19 +102,59 @@
 		var geraInputs = "";
 
 		//Calculando o valor de cada parcela
-		var valorParcela = parseFloat($(".total").val() / valor).toFixed(2);
+		var valorParcela = parseFloat($("#valorVenda").val() / valor).toFixed(2);
 
+		//Pegando data do primeiro vencimento
+		var vencimento = $("#firstVencimento").val();
+
+		//Tratamento do input vencimento parcela
+		 var ano = vencimento.substring(0,4);
+		    var mes = vencimento.substring(5,7);
+		    var dia = vencimento.substring(8,10);
+
+		  if(dia =='29' && leapYear(ano )) dia = '28';
+
+		    var dataInicial = new Date(ano,mes,dia);
+		    var dataParcela = new Date();
+		    var resultado = "";
+		    var novoMes = 0;
+		    var novoAno = 0;
+		
 		//gerando os inputs com os valores de cada parcela
 		for (var i = 0; i < valor; i++) {
-			geraInputs += "<tr><td> <input class='table table-striped table-hover table-condensed table-bordered' type='text' name='parcela[]' value='"+valorParcela+"'></td> <td><input class='table table-striped table-hover table-condensed table-bordered' type='date' value=''></td></tr>";
+			//Calcula data de vencimento parcela
+				novoMes = ( dataInicial.getMonth() + i ) % 12;
+		        novoMes = novoMes == 0 ? 12 : novoMes;
+		        novoAno = dataInicial.getFullYear() + ( ( ( dataInicial.getMonth() + i ) - novoMes ) / 12 );
+		        
+		 		dataParcela.setDate(dia);
+		        dataParcela.setMonth(novoMes);
+		        dataParcela.setYear(novoAno);
+		        
+		        resultado += dataParcela.getFullYear();     
+		        resultado += "-";
+		        resultado += correcaoMes(dataParcela.getMonth() + 1);
+		        resultado += "-";
+		        resultado += correcaoDia(dataParcela.getDate());
+		        
+		      //Exibe input de parcelas  
+			geraInputs += "<tr><td><input class='form-control' type='text' name='parcelamento' value='"+valorParcela+"'></td><td><input class='form-control' type='date' name='vencimentoParcela' value='"+resultado+"'></td></tr>";
+			//Limpa a variavel resultado para o proximo input
+			resultado = "";
 			}
+
+		 //Verifica ano Bissexto
+		  function leapYear(year){
+			return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+		  }
 
 		// inserindo as parcelas 
 		$("#parcelas").html(geraInputs);
 	}
 
+	
 	$(document).ready(function(e) {
-		$(".total").on('change keyup keydown keypress', function() {
+		$("#valorVenda").on('change keyup keydown keypress', function() {
 			// ao alterar o valor total, chama a funcao para alterar as parcelas
 			atualizaValores();
 
@@ -95,9 +181,7 @@
 
 	});
 </script>
-
-
-
+<!-- FIM DA COPIA -->
 </head>
 
 <body>
@@ -108,6 +192,7 @@
 	<div class="container">
 		<br>
 
+		<!-- COPIAR ESSE CODIGO TODO -->
 		<form action="/cadvenda" method="POST">
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
@@ -125,10 +210,10 @@
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 					<label for="inputProduto">Produto</label> <select name="produto"
-						id="inputProduto" class="form-control">
+						id="inputProduto" class="form-control" onchange="check_status(this);">
 						<option selected>Escolher...</option>
 						<c:forEach var="user" items="${produto}">
-							<option value="${user.id}">${user.nome}</option>
+							<option value="${user.id}" data="${user.valor}">${user.nome}</option>				
 						</c:forEach>
 					</select>
 				</div>
@@ -136,17 +221,33 @@
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 					<label for="validationTooltip03">Valor venda</label> <input
-						type="text" class="form-control" id="validationTooltip03"
+						type="text" class="form-control" id="valorVenda"
 						name="valorvenda" value="" placeholder="R$ " required>
 				</div>
 			</div>
+			
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
-					<label for="inputParcela">Parcela</label> <select name="parcela"
-						id="inputParcela" class="form-control">
-						<option selected>Parcela...</option>
-						<option value="1">À vista</option>
-						<option value="2">2x</option>
+					<label for="example-date-input">Primeiro Vencimento</label> <input
+						type="date" class="form-control" id="firstVencimento"
+						name="firstVencimento" value="" placeholder="Vencimento" required>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="col-md-4 mb-3" name="condicao-pag" id="condicao-pag">
+				<label for="validationTooltip03">Forma de Pagamento</label>
+					<select class="form-control">
+						<option value=0>À vista</option>
+						<option value=1>À prazo</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="parcelamento" style="display: none">
+					<label for="inputParcela">Parcela</label> <select id="n-parcelas" name="numParcela" class="form-control">
+						<option value="2" selected>2x</option>
 						<option value="3">3x</option>
 						<option value="4">4x</option>
 						<option value="5">5x</option>
@@ -162,34 +263,7 @@
 			<div class="starter-template">
 				<table>
 					<tbody>
-						<tr>
-							<td><label>Total R$</label></td>
-							<td><input type="number" min="0" class="total" value="100" /></td>
-						</tr>
-						<tr name="condicao-pag" id="condicao-pag">
-							<td><label>Condição de pagamento:</label></td>
-							<td><select />
-								<option value=0>À vista</option>
-								<option value=1>À prazo</option> </select></td>
-						</tr>
-						<tr id="parcelamento" style="display: none">
-							<td>Parcelar em</td>
-							<td><select id="n-parcelas">
-									<option></option>
-									<option value="2" selected>2x</option>
-									<option value="3">3x</option>
-									<option value="4">4x</option>
-									<option value="5">5x</option>
-									<option value="6">6x</option>
-									<option value="7">7x</option>
-									<option value="8">8x</option>
-									<option value="9">9x</option>
-									<option value="10">10x</option>
-							</select></td>
-						</tr>
-
 						<tr id="parcelas" style="display: none">
-
 						</tr>
 					</tbody>
 				</table>
@@ -198,13 +272,14 @@
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 					<label for="example-date-input">Data da Venda</label> <input
-						type="date" class="form-control" id="validationTooltip03"
-						name="datavenda" value="" placeholder="Data Venda" required>
+						type="date" class="form-control" id="datavenda"
+						name="datavenda" value="" placeholder="Data Venda" readonly>
 				</div>
 			</div>
 			<button class="btn btn-primary" type="submit">Enviar</button>
 		</form>
 	</div>
+<!-- FIM DA COPIA -->
 
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="login-util/vendor/jquery/jquery.slim.min.js"></script>
